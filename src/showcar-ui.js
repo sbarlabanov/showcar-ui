@@ -20,7 +20,7 @@ if (!window.$) {
 window.ut = window.ut || [];
 window.dataLayer = window.dataLayer || [];
 
-let warn = (msg) => window.console && window.console.warn(msg);
+let warn = msg => window.console && window.console.warn(msg);
 let showcar = {};
 
 // Dropdown
@@ -45,7 +45,7 @@ rotatingArrow();
 
 // Collapse
 import collapse from './06-components/atoms/collapse/collapse';
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     collapse();
 });
 
@@ -77,13 +77,6 @@ googleMap('as24-google-map');
 import tag from './06-components/atoms/tag/tag';
 tag();
 
-// navigation
-import navigation from './06-components/organisms/navigation/navigation';
-// Loading on document ready. Otherwise the navigation does not work in IE11.
-document.addEventListener('DOMContentLoaded', function () {
-    navigation();
-});
-
 // navigation-v2
 import navigationv2 from './06-components/organisms/navigation-v2/navigation-v2';
 navigationv2();
@@ -107,7 +100,7 @@ accessibleLinks();
 
 //Clean up cookies
 import cleanCookies from './js/showcar-clean-cookies';
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
     cleanCookies();
 });
 
@@ -118,7 +111,7 @@ window.Storage = require('showcar-storage');
 window.lazySizesConfig = {
     loadMode: 1,
     expFactor: 0,
-    hFac: 0
+    hFac: 0,
 };
 import 'lazysizes';
 
