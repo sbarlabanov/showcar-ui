@@ -77,13 +77,6 @@ googleMap('as24-google-map');
 import tag from './06-components/atoms/tag/tag';
 tag();
 
-// navigation
-import navigation from './06-components/organisms/navigation/navigation';
-// Loading on document ready. Otherwise the navigation does not work in IE11.
-document.addEventListener('DOMContentLoaded', function () {
-    navigation();
-});
-
 // navigation-v2
 import navigationv2 from './06-components/organisms/navigation-v2/navigation-v2';
 navigationv2();
