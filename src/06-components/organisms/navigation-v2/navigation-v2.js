@@ -1,18 +1,18 @@
 export default () => {
     document.addEventListener('keydown', e => {
         const keyCode = e.which;
-        const header = e.target.closest('.sc-navigation-v2');
+        const header = e.target.closest('header[role=navigation]');
         if (!header) {
             return;
         }
         if(keyCode === 27) {
             // ESCAPE
-            e.target.closest('.sc-navigation-v2 nav li.open').classList.remove('open');
+            e.target.closest('header[role=navigation] nav li.open').classList.remove('open');
         }
     });
 
     document.addEventListener('click', e => {
-        const header = e.target.closest('.sc-navigation-v2');
+        const header = e.target.closest('header[role=navigation]');
 
         // 1. click outside header closes all the menus
         // 2. click hamburger button opens the main menu
@@ -28,29 +28,29 @@ export default () => {
         }
 
         // 2
-        const mobileButton = e.target.closest('.sc-navigation-v2 .sc-btn-mobile-menu');
+        const mobileButton = e.target.closest('header[role=navigation] .sc-btn-mobile-menu');
         if (mobileButton) {
             toggleMenu(header, mobileButton);
             return;
         }
 
         // 3
-        const menuOpener = e.target.closest('.sc-navigation-v2 nav li');
-        const menuButton = e.target.closest('.sc-navigation-v2 nav li button');
+        const menuOpener = e.target.closest('header[role=navigation] nav li');
+        const menuButton = e.target.closest('header[role=navigation] nav li button');
         if (menuOpener && menuButton) {
             toggleSubmenu(menuOpener, menuButton);
             return;
         }
 
         // 4
-        const openedLi = e.target.closest('.sc-navigation-v2 nav li.open');
+        const openedLi = e.target.closest('header[role=navigation] nav li.open');
         if (!openedLi) {
             closeAllOpenedSubmenus();
             return;
         }
 
         // 5
-        const anyLink = e.target.closest('.sc-navigation-v2 nav a');
+        const anyLink = e.target.closest('header[role=navigation] nav a');
         if (anyLink) {
             closeAllOpenedSubmenus();
             return;
@@ -60,7 +60,7 @@ export default () => {
 
     const toggleSubmenu = (opener, button) => {
         const isDesktop = window.innerWidth >= 923; // see breakpoint
-        const menuItems = [...document.querySelectorAll('.sc-navigation-v2 nav li')]; // return array, not NodeList
+        const menuItems = [...document.querySelectorAll('header[role=navigation] nav li')]; // return array, not NodeList
 
         if (isDesktop) {
             menuItems.forEach(item => {
@@ -88,6 +88,6 @@ export default () => {
     };
 
     const closeAllOpenedSubmenus = () => {
-        [...document.querySelectorAll('.sc-navigation-v2 nav li.open')].forEach(openedMenu => closeMenu(openedMenu));
+        [...document.querySelectorAll('header[role=navigation] nav li.open')].forEach(openedMenu => closeMenu(openedMenu));
     };
 };
