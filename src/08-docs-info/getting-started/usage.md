@@ -10,7 +10,7 @@ If you are using UI-Composition you can use the showcar-ui fragment by adding th
 
 ```html
 <body>
-  <!--#include virtual="/fragment/assets/external/showcar-ui/showcar-ui-standalone-fragment.html" -->
+  <!--#include virtual="/fragment/assets/external/showcar-ui/showcar-ui-toggled-fragment.html" -->
 </body>
 ```
 
