@@ -40,8 +40,7 @@
             errorMessage: errorMsg || ''
         };
         
-        var prefix = (location.host.indexOf('dev-www.') > -1) ? 'dev-' : '';
-        var url = 'https://' + prefix + 'js-error-logger.infinity.eu-west-1.s24cloud.net/log';
+        var url = 'https://' + location.host + '/frontend-metrics/log';
         postError(url, JSON.stringify(data));
     };
 })(navigator, location);
