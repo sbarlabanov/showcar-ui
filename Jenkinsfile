@@ -5,6 +5,7 @@ pipeline {
   options {
     disableConcurrentBuilds() // The pipeline should run only once at a time
     preserveStashes(buildCount: 5)
+    buildDiscarder(logRotator(daysToKeepStr: '90'))
   }
 
   // Environment variables for all stages
