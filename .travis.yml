@@ -48,4 +48,4 @@ after_success:
   # deploy to release branch
   - 'if [ "$TRAVIS_PULL_REQUEST" != "true" ] && [ "$TRAVIS_BRANCH" == "master" ]; then bash ./travis_release.sh; fi'
   # deploy to docs branch (gh-pages)
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "true" ] && [ "$TRAVIS_BRANCH" == "master" ]; then bash ./travis_docs.sh; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "true" ] && [ "$TRAVIS_BRANCH" == "yellow" ]; then bash ./travis_docs.sh; fi'
