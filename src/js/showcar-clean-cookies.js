@@ -59,7 +59,9 @@ const whiteList = [
     'brand-variation',
     'brand-opt-out',
     'brand-survey-was-shown',
-    'brand-pageview-counter'
+    'brand-pageview-counter',
+    'page-views-feed',
+    'last-search-feed'
 ];
 
 const deleteCookieByName = function(cookie) {
