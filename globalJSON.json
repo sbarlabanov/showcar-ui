@@ -243,7 +243,7 @@
         "type": "atoms",
         "group": "highlight",
         "srcDir": "src/06-components/atoms/highlight/docs",
-        "markDown": "\"<h2>Highlight<span class=\\\"status approved\\\">Approved</span></h2>\\nWe have to versions of highlight `sc-highlight` and `sc-highlight--silent`\\n\"",
+        "markDown": "\"<h2>Highlight<span class=\\\"status approved\\\">Approved</span></h2>\\nWe have to versions of highlight ```sc-highlight``` and ```sc-highlight--silent```\\n\"",
         "html": "\"<span class=\\\"sc-highlight sc-font-s\\\">Nebelscheinwerfer</span>\\n<span class=\\\"sc-highlight sc-font-s\\\">Panoramadach</span>\\n<span class=\\\"sc-highlight--silent sc-font-s\\\">Xenonscheinwerfer</span>\\n\"",
         "codeExample": "\"&lt;span class=&quot;sc-highlight sc-font-s&quot;&gt;Nebelscheinwerfer&lt;/span&gt;\\n&lt;span class=&quot;sc-highlight sc-font-s&quot;&gt;Panoramadach&lt;/span&gt;\\n&lt;span class=&quot;sc-highlight--silent sc-font-s&quot;&gt;Xenonscheinwerfer&lt;/span&gt;\\n\""
     },
