@@ -24,6 +24,7 @@ $sc-btn-ghost-active-text-color: $black-120;
 $sc-btn-marketing-active-text-color: $black-120;
 
 $sc-btn-bob-disabled-background-color: $yellow-50;
+$sc-btn-bob-disabled-font-color: $black-50;
 $sc-btn-ross-disabled-background-color: $black-50;
 $sc-btn-ghost-disabled-text-color: $black-50;
 $sc-btn-marketing-disabled-text-color: $black-50;
@@ -79,6 +80,7 @@ $sc-btn-marketing-disabled-text-color: $black-50;
 
   &[disabled] {
     background-color: $sc-btn-bob-disabled-background-color;
+    color: $sc-btn-bob-disabled-font-color;
   }
 }
 
