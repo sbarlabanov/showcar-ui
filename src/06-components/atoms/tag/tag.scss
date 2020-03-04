@@ -29,11 +29,16 @@
     cursor: pointer;
 
     & svg {
-      width: $S;
-      height: $S;
       position: relative;
-      fill: $color-link;
-      stroke: $color-link;
+      width: $L;
+      height: $L;
+      border: 1px solid $black-100;
+      border-radius: 50%;
+      padding: 2px;
+      margin-left: 2px;
+      top: 3px;
+      fill: $black-100;
+      stroke: $black-100;
     }
   }
 
