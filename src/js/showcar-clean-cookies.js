@@ -61,7 +61,8 @@ const whiteList = [
     'brand-survey-was-shown',
     'brand-pageview-counter',
     'page-views-feed',
-    'last-search-feed'
+    'last-search-feed',
+    'home-feed-bucket'
 ];
 
 const deleteCookieByName = function(cookie) {
