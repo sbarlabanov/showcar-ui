@@ -52,16 +52,17 @@ const whiteList = [
     'noauth',
     'random',
     'as24ArticleType',
-    '5c3e5f30-4d66-4a27-931d-61b7f4905dedcconsent',
-    '5c3e5f30-4d66-4a27-931d-61b7f4905dedeuconsent',
-    '5c3e5f30-4d66-4a27-931d-61b7f4905dedfaktorChecksum',
-    '5c3e5f30-4d66-4a27-931d-61b7f4905dedfaktorId',
+    '0d1d0abe-8984-4629-b696-ae425affff05cconsent',
+    '0d1d0abe-8984-4629-b696-ae425affff05euconsent',
+    '0d1d0abe-8984-4629-b696-ae425affff05faktorChecksum',
+    '0d1d0abe-8984-4629-b696-ae425affff05faktorId',
     'brand-variation',
     'brand-opt-out',
     'brand-survey-was-shown',
     'brand-pageview-counter',
     'page-views-feed',
-    'last-search-feed'
+    'last-search-feed',
+    'home-feed-bucket'
 ];
 
 const deleteCookieByName = function(cookie) {
@@ -82,7 +83,7 @@ export const findUnneededCookies = (cookie) => {
         isNotWhitelisted = !regex.test(cookie);
         i++;
     }
-    
+
     return isNotWhitelisted;
 };
 
@@ -90,6 +91,6 @@ export default () => {
     const unneededCookies = document.cookie.split(';')
         .map(cookie => getCookieName(cookie))
         .filter(findUnneededCookies);
-    
+
     unneededCookies.forEach(deleteCookieByName);
 };
