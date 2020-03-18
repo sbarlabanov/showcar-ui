@@ -96,7 +96,7 @@ $spy-height: 55px;
       }
 
       &__text {
-        color: $orange-100;
+        color: $google-blue;
       }
     }
   }
@@ -158,7 +158,7 @@ $spy-height: 55px;
       }
 
       #{$toggle}__text {
-        color: $orange-100;
+        color: $google-blue;
       }
     }
 
@@ -245,8 +245,8 @@ $spy-height: 55px;
     }
 
     &--active {
-      color: $orange-100;
-      border-bottom: 2px solid $orange-100 !important;
+      color: $google-blue;
+      border-bottom: 2px solid $google-blue !important;
       padding-top: 16px;
       padding-bottom: 15px;
       padding-left: 24px;
