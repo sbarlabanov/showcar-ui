@@ -75,7 +75,6 @@ gulp.task('replace', done => {
         .pipe(stringReplace('@@POLYFILL_FETCH', readJsFile('node_modules/whatwg-fetch/fetch.js'), replaceOptions))
         .pipe(stringReplace('@@POLYFILL_URL_SEARCH_PARAMS', readJsFile('node_modules/url-search-params-polyfill/index.js'), replaceOptions))
         .pipe(stringReplace('@@SCRIPT_ERROR_COLLECTOR', readJsFile('src/js/inline-js/js-error-collector.js'), replaceOptions))
-        .pipe(stringReplace('@@SCRIPT_FONT_LOADER', readJsFile('src/js/inline-js/font-loader.js'), replaceOptions))
         .pipe(gulp.dest('dist/'));
     done();
 });
