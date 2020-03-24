@@ -6,6 +6,7 @@ const whiteList = [
     '_gat',
     'AMP_TOKEN',
     'as24AutoAboLike2Drive',
+    'as24AutoAboMobileAppView',
     'as24-gtmSearchCrit',
     'as24Visitor',
     'culture',
@@ -62,13 +63,12 @@ const whiteList = [
     'brand-pageview-counter',
     'page-views-feed',
     'last-search-feed',
-    'home-feed-bucket'
+    'home-feed-bucket',
+    'consentForAds',
+
 ];
 
 const deleteCookieByName = function(cookie) {
-    const domain = window.location.hostname.replace(/.*autoscout24\./, '.autoscout24.');
-    // we do it twice because some cookies are set to www.autoscout24.tld and some to .autoscout24.tld domains
-    document.cookie = cookie + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=' + domain;
     document.cookie = cookie + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
 
