@@ -7,6 +7,7 @@ const whiteList = [
     'AMP_TOKEN',
     'as24AutoAboLike2Drive',
     'as24-gtmSearchCrit',
+    'as24AutoAboMobileAppView',
     'as24Visitor',
     'culture',
     'testmode',
@@ -62,7 +63,8 @@ const whiteList = [
     'brand-pageview-counter',
     'page-views-feed',
     'last-search-feed',
-    'home-feed-bucket'
+    'home-feed-bucket',
+    'consentForAds'
 ];
 
 const deleteCookieByName = function(cookie) {
