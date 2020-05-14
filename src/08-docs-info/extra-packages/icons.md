@@ -1,9 +1,17 @@
 <h2>Icons</h2>
-You can use all the icons defined by showcar-icons with the custom tag `<as24-icon type="[[icon-name]]"></as24-icon>`.
 
-For further information see the documentation under <a href="https://github.com/Scout24/showcar-icons" target="_blank">https://github.com/Scout24/showcar-icons</a>
+```html
+<as24-icon type="star"></as24-icon>
+```
 
-We also have standart size classes for styling icons <a href="https://scout24.github.io/showcar-ui/#utilities-target" target="_blank">here</a>
+You can use all the icons defined by showcar-icons with the custom tag. Please use it with standart [sizes](https://autoscout24.github.io/showcar-ui/#utilities-target). Only "most-used" icons are deliver with showca-icons.
+
+For further information see the documentation under <a href="https://github.com/AutoScout24/showcar-icons" target="_blank">https://github.com/AutoScout24/showcar-icons</a>
+
+Icons related to 360 player could be found [here](https://github.com/AutoScout24/image-fragments/tree/master/ui/public/static-images/360)
+
+Icons with priceestimation could be found [here](https://github.com/AutoScout24/priceevaluation/blob/master/app/assets/stylesheets/components/price_label/_components.price-label.scss). Technically it's not an icon but styled html elements
+<img src="/showcar-ui/docs/assets/images/price-tags.png">
 
 The following icon names are currently available:
 <ul id="as24-icons-list" class="icons-list"></ul>
