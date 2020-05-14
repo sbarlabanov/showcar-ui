@@ -65,7 +65,7 @@ const whiteList = [
     'last-search-feed',
     'home-feed-bucket',
     'consentForAds',
-
+    'acExperiment',
 ];
 
 const deleteCookieByName = function(cookie) {
