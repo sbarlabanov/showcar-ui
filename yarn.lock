@@ -9543,9 +9543,9 @@ showcar-storage@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/showcar-storage/-/showcar-storage-1.1.1.tgz#25ffe2186e5fc5e8bc624c366155eee7d0e74769"
 
-"showcar-tracking@git+https://github.com/Scout24/showcar-tracking.git#v0.1.11":
-  version "0.1.11"
-  resolved "git+https://github.com/Scout24/showcar-tracking.git#0eed87287b38a02c3b8cc524dd673c2b0f7a18bf"
+"showcar-tracking@git+https://github.com/AutoScout24/showcar-tracking.git#v0.2.0":
+  version "0.2.0"
+  resolved "git+https://github.com/AutoScout24/showcar-tracking.git#c02e2970415b4da5d14875f997e4ebda9a5e9e6a"
   dependencies:
     amp-index-of "^1.1.0"
     amp-is-date "^1.0.1"
