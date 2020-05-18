@@ -21,7 +21,6 @@
         "carousel": "src/08-docs-info/extra-packages/carousel.md",
         "pictures": "src/08-docs-info/extra-packages/pictures.md",
         "tracking": "src/08-docs-info/extra-packages/tracking.md",
-        "ads": "src/08-docs-info/extra-packages/ads.md",
-        "teaser": "src/08-docs-info/extra-packages/teaser.md"
+        "ads": "src/08-docs-info/extra-packages/ads.md"
     }
 }
