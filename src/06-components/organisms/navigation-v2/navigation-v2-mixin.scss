@@ -227,13 +227,10 @@ $header-height: 71px;
   }
 
   li {
-    &:hover,
-    &.open {
-      .title {
-        &::after {
-          background-image: url($flyout-arrow-highlighted);
-        }
-      }
+    &.open .title::after,
+    .title:hover::after {
+      background-image: url($flyout-arrow-highlighted);
+      transition: all .2s ease-in;
     }
 
     &.open {
