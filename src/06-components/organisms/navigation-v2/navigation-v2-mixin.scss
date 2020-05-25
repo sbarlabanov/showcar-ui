@@ -228,9 +228,13 @@ $header-height: 71px;
 
   li {
     &.open .title::after,
+    .title::after {
+      transition: background .2s ease-in;
+    }
+    
+    &.open .title::after,
     .title:hover::after {
       background-image: url($flyout-arrow-highlighted);
-      transition: all .2s ease-in;
     }
 
     &.open {
