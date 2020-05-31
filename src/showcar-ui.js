@@ -27,6 +27,10 @@ let showcar = {};
 import dropdown from './06-components/atoms/custom-dropdown/custom-dropdown';
 dropdown('custom-dropdown');
 
+// highlighter
+import highlighter from './06-components/atoms/highlighter/highlighter';
+highlighter();
+
 // Pager
 import Pager from './06-components/organisms/pagination/pagination';
 window.Pager = Pager;
