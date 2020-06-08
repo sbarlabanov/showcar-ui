@@ -1,7 +1,7 @@
 @mixin rotating-arrow($direction: 'up') {
   @if $direction == 'down' {
     content: '';
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.5' height='6.2766132' viewBox='0 0 10.5 6.2766132' version='1.1'%3E%3Cpath d='M 0.00436459,0.02846397 4.5788834,4.2192076 9.1532589,0.02881975' stroke-width='1.99967039' transform='translate%28.67 .714%29' stroke='%23949494' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");  /* stylelint-disable-line string-quotes */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;'%3E%3Cpath d='M12,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l7.3,7.3l7.3-7.3c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l-8,8C12.5,17.9,12.3,18,12,18z'/%3E%3C/svg%3E");  /* stylelint-disable-line string-quotes */
     background-position: right center;
     background-repeat: no-repeat;
     min-width: 12px;

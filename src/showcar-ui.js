@@ -20,7 +20,7 @@ if (!window.$) {
 window.ut = window.ut || [];
 window.dataLayer = window.dataLayer || [];
 
-let warn = (msg) => window.console && window.console.warn(msg);
+let warn = msg => window.console && window.console.warn(msg);
 let showcar = {};
 
 // Dropdown
@@ -45,7 +45,7 @@ rotatingArrow();
 
 // Collapse
 import collapse from './06-components/atoms/collapse/collapse';
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     collapse();
 });
 
@@ -100,7 +100,7 @@ accessibleLinks();
 
 //Clean up cookies
 import cleanCookies from './js/showcar-clean-cookies';
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
     cleanCookies();
 });
 
@@ -111,7 +111,7 @@ window.Storage = require('showcar-storage');
 window.lazySizesConfig = {
     loadMode: 1,
     expFactor: 0,
-    hFac: 0
+    hFac: 0,
 };
 import 'lazysizes';
 

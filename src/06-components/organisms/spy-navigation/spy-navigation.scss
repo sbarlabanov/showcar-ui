@@ -4,6 +4,7 @@
 @import '../../../02-sass-tools/rotating-arrow';
 
 $spy-height: 55px;
+$flyout-arrow-highlighted: "data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%231A72E8stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st1%7Bfill:none;stroke:%231A72E8stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st2%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%231A72E8%7D .st3%7Bfill:%231A72E8%7D .st4%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%231A72E8stroke:%231A72E8stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st5%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st6%7Bfill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st7%7Bfill:none;stroke:%231A72E8stroke-width:2;stroke-linecap:round;stroke-linejoin:round;%7D .st8%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%2395C11F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st9%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23E30613;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cpath class='st3' d='M12,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l7.3,7.3l7.3-7.3c0.4-0.4,1-0.4,1.4,0 s0.4,1,0,1.4l-8,8C12.5,17.9,12.3,18,12,18z'/%3E%3C/svg%3E";
 
 @mixin visibleOnML {
   opacity: 1;
@@ -87,7 +88,7 @@ $spy-height: 55px;
     #{$nav}__toggle {
       &:after {
         @include rotating-arrow('up');
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.5' height='6.2766132' viewBox='0 0 10.5 6.2766132' version='1.1'%3E%3Cpath d='M 0.00436459,0.02846397 4.5788834,4.2192076 9.1532589,0.02881975' stroke-width='1.99967039' transform='translate%28.67 .714%29' stroke='%23ff7500' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E"); /* stylelint-disable-line string-quotes */
+        background-image: url($flyout-arrow-highlighted);
       }
 
       &--visible {
@@ -96,7 +97,7 @@ $spy-height: 55px;
       }
 
       &__text {
-        color: $orange-100;
+        color: $google-blue;
       }
     }
   }
@@ -153,12 +154,8 @@ $spy-height: 55px;
     }
 
     &:hover {
-      &:after {
-        //background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23ff7500%22%20d%3D%22M16.363%206.11L10%2012.476%203.636%206.11l-.707.708%206.363%206.364.707.707.707-.708%206.363-6.364z%22/%3E%3C/svg%3E');
-      }
-
       #{$toggle}__text {
-        color: $orange-100;
+        color: $google-blue;
       }
     }
 
@@ -245,8 +242,8 @@ $spy-height: 55px;
     }
 
     &--active {
-      color: $orange-100;
-      border-bottom: 2px solid $orange-100 !important;
+      color: $google-blue;
+      border-bottom: 2px solid $google-blue !important;
       padding-top: 16px;
       padding-bottom: 15px;
       padding-left: 24px;

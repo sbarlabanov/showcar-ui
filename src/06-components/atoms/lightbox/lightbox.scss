@@ -9,9 +9,13 @@
   transform: translate(-50%, -50%);
   border-radius: $form-border-radius;
   background-color: $white;
-  padding: $XL 0;
+  padding: $L !important;
   z-index: 140; // overlay header
   max-height: calc(100vh - 80px);
+
+  @include mqmin($viewportM) {
+    padding: $XXXL !important;
+  }
 
   @include mqmin(582px) {
     width: 550px;
@@ -42,44 +46,54 @@
 .sc-lightbox__content {
   max-height: calc(100vh - 120px);
   overflow: auto;
-  padding: 0 $L;
+  padding: 0 !important;
   flex: 1;
+
+  @include mqmin($viewportM) {
+    padding: 0 !important;
+  }
 }
 
 .sc-lightbox__close {
-  height: 32px;
-  width: 32px;
-  line-height: $XL;
-  padding: $S;
-  display: inline-block;
   position: absolute;
-  top: $L;
-  right: $L;
-  background: $white;
-  border: 1px solid $black-30;
   cursor: pointer;
-  border-radius: $XS;
-  transition: border-color .2s;
-  z-index: 1;
+  right: 21px;
+  top: 21px;
+  width: $XL;
+  height:$XL;
+  border: 2px solid $black-100;
+  border-radius: 50%;
+  background-color: $white;
+  z-index: 3;
+
+  &:before, &:after {
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    border-radius:30%;
+    content: ' ';
+    height: 12px;
+    width: 2px;
+    background-color: $black-100;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
 }
 
 .sc-lightbox__close as24-icon {
-  pointer-events: none;
-}
-
-.sc-lightbox__close svg {
-  transition: fill .2s;
-  fill: $black-60;
-  width: $M;
-  height: $M;
+  display: none !important;
 }
 
 .sc-lightbox__close:hover {
-  border-color: $black-90;
-}
-
-.sc-lightbox__close:hover svg {
-  fill: $black-90;
+  border-color: $black-120;
+  &:before, &:after {
+    background-color: $black-120;
+  }
 }
 
 .sc-lightbox__overlay {

@@ -2,12 +2,6 @@
 module.exports = function(){
     @@SCRIPT_ERROR_COLLECTOR
     
-    if (window.location.hash.indexOf('systemfonts') < 0) {
-    @@SCRIPT_FONT_LOADER
-    } else {
-        document.write('<style>body,[data-showcar-ui]{font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, "Segoe UI Symbol" !important; }</style>');
-    }
-    
     @@POLYFILL_DOM4
     @@POLYFILL_DOCUMENT_REGISTER_ELEMENT
     @@POLYFILL_ARRAY

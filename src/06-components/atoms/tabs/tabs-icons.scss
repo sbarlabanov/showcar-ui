@@ -42,8 +42,8 @@
   }
 
   as24-icon {
-    width: 36px;
-    height: $L;
+    width: 24px;
+    height: 24px;
     display: inline-block;
 
     svg g {
@@ -57,7 +57,7 @@
 
   &:focus {
     svg g {
-      fill: $orange-100;
+      fill: $google-blue;
     }
   }
 }
@@ -67,14 +67,14 @@
   height: 41px;
   padding-top: 3px;
   margin-bottom: 0;
-  border-top: 4px solid $orange-100;
+  border-top: 4px solid $google-blue;
 
   @include mqmin(510px) {
     height: 52px;
     padding-top: 7px;
   }
 
-  as24-icon svg g {
-    fill: $orange-100;
+  as24-icon svg {
+    fill: $google-blue;
   }
 }

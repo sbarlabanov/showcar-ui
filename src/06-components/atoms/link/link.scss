@@ -3,7 +3,7 @@
 
 a,
 .sc-link {
-  @include link;
+  @include link($size: M);
 }
 
 .sc-inline-link {

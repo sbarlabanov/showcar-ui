@@ -102,8 +102,7 @@ module.exports = (globalJSON, content, withOutMenu) => {
 
     const leftMenu = withOutMenu ? '' : `
         <div id="sidebar">
-            <a href="#about-target"><div id="sidebar-logo"></div></a>
-            <h1>ShowCar UI</h1>
+            <h1><a href="#about-target" id="sidebar-logo"></a>ShowCar UI</h1>
             <div id="collapse-to-hamburger">Collapse menu</div>
             <div id="left-menu-toggle">Show left menu</div>
             <div id="all-code-toggler"><span>Show</span> all code samples</div>

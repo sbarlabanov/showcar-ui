@@ -1,6 +1,6 @@
 <h2>Fonts and headlines<span class="status approved">Approved</span></h2>
 
-ShowCars default `font-family` is Source Sans Pro. Please use the predefined classes to increase or decrease the font size. You should not define explicit font sizes. To use the Source Sans Pro font, you don't have to do anything.
+ShowCars default `font-family` is MakeItSans. Please use the predefined classes to increase or decrease the font size. You should not define explicit font sizes. To use the MakeItSans font, you don't have to do anything.
 
 #### Font sizes
 

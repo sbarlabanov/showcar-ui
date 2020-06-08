@@ -4,7 +4,7 @@
   "description": "Showcar-ui is the pattern library that is used to build the frontend of AutoScout24. It provides CSS classes, custom elements and components.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Scout24/showcar-ui.git"
+    "url": "git+https://github.com/AutoScout24/showcar-ui.git"
   },
   "publishConfig": {
     "access": "public"
@@ -23,7 +23,7 @@
   },
   "author": "AutoScout24 GmbH",
   "license": "MIT",
-  "homepage": "https://github.com/Scout24/showcar-ui#readme",
+  "homepage": "https://github.com/AutoScout24/showcar-ui#readme",
   "browserslist": [
     "last 2 versions",
     "ie 11"
@@ -51,10 +51,10 @@
     "lazysizes": "^4.1.3",
     "promiz": "^1.0.5",
     "showcar-carousel": "^4.3.4",
-    "showcar-icons": " ^0.6.x",
+    "showcar-icons": "https://github.com/Autoscout24/showcar-icons.git#rebranded",
     "showcar-pictures": "^3.1.3",
     "showcar-storage": "^1.1.1",
-    "showcar-tracking": "git+https://github.com/Scout24/showcar-tracking.git#v0.1.11",
+    "showcar-tracking": "git+https://github.com/AutoScout24/showcar-tracking.git#v0.2.0",
     "susy": "^2.2.12",
     "uglify-js": "^3.4.9",
     "url-search-params-polyfill": "^6.0.0",

@@ -2,23 +2,22 @@
 
 @keyframes closing {
   0% {
-    transform: scale(1,1);
+    transform: scale(1, 1);
   }
   // 10% {
   //   transform: scale(1.2,1.2);
   // }
   100% {
-    transform: scale(0,0);
+    transform: scale(0, 0);
   }
 }
 
 .sc-tag {
   display: inline-block;
-  border: 1px solid $black-30;
   background-color: $black-20;
-  border-radius: 3px;
+  border-radius: 20px;
   margin: 2px $XS 2px 0;
-  padding-left: $S;
+  padding: 0 0 0 $S;
 
   &__label {
     display: inline-block;
@@ -30,11 +29,16 @@
     cursor: pointer;
 
     & svg {
-      width: $S;
-      height: $S;
       position: relative;
-      fill: $color-link;
-      stroke: $color-link;
+      width: $L;
+      height: $L;
+      border: 1px solid $black-100;
+      border-radius: 50%;
+      padding: 2px;
+      margin-left: 2px;
+      top: 3px;
+      fill: $black-100;
+      stroke: $black-100;
     }
   }
 

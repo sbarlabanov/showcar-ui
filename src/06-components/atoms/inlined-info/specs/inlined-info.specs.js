@@ -8,7 +8,7 @@ module.exports = (frame) => {
 
         it('has correct height', () => {
             addon.assert({
-                height: 22
+                height: 24
             });
         });
 
