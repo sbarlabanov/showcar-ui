@@ -18,7 +18,7 @@
   -webkit-tap-highlight-color: transparent; // to prevent default blinking behavior
 
   &:focus {
-    color: $orange-100;
+    color: $google-blue;
   }
 
   @include mqmin($viewportM) {
@@ -38,8 +38,8 @@
 .sc-tab--with-text--active {
   border-bottom: none;
   height: 48px;
-  color: $orange-100;
-  border-top: 4px solid $orange-100;
+  color: $google-blue;
+  border-top: 4px solid $google-blue;
   opacity: 1;
   outline: none; // to prevent bottom line
 

@@ -8,6 +8,7 @@ const whiteList = [
     'as24AutoAboLike2Drive',
     'as24AutoAboMobileAppView',
     'as24-gtmSearchCrit',
+    'as24AutoAboMobileAppView',
     'as24Visitor',
     'culture',
     'testmode',

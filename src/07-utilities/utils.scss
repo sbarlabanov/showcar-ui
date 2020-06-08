@@ -2,6 +2,9 @@
 @import '../02-sass-tools/sass-mq';
 @import '../02-sass-tools/utils';
 
+.sc-highlight-color {
+  color: $color-link;
+}
 
 .sc-clearfix {
   @include clearfix;

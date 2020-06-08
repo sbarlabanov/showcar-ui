@@ -3,10 +3,10 @@
 .sc-link-with-icon {
   &:hover {
     as24-icon svg {
-      fill: $blue-90;
+      fill: $color-link-hover;
     }
     a {
-      color: $blue-90;
+      color: $color-link-hover;
     }
   }
 

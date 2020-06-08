@@ -71,15 +71,6 @@
 
 .sc-superhero__title--branded {
   margin-bottom: 0;
-
-  &::before {
-    content: '';
-    width: $XXXXL;
-    height: $XS;
-    display: block;
-    border: $XS solid $orange-100;
-    margin-bottom: $M;
-  }
 }
 
 .sc-superhero__wrapper {

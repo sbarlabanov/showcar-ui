@@ -73,7 +73,7 @@ module.exports = function (frame, assert, browserWidth, helper) {
             var content = frame.get('#collapse-closed');
             var link = frame.get('#collapse-toggle [data-target="#collapse-closed"]');
             content.assert({
-                top: link.bottom
+                top: link.bottom.plus(2)
             });
         });
     });

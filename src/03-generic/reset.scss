@@ -47,6 +47,10 @@ table {
   font-smooth: always;
 }
 
+*::selection {
+  background-color: $yellow;
+}
+
 html {
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%; // Prevent font scaling in landscape while allowing user zoom
@@ -55,9 +59,8 @@ html {
 }
 
 body, [data-showcar-ui] {
-  font-family: sans-serif;
   font-size: 1rem;
-  line-height: 1.382;
+  line-height: 1.5;
   color: $black-100;
   -webkit-overflow-scrolling: touch;
   background-color: $black-20;

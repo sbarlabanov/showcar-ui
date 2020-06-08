@@ -25,9 +25,9 @@ module.exports = (frame, assert, browserWidth) => {
 
         } else {
             it('shown correctly on desktop', () => {
-                container.assert({
-                    height: 68
-                });
+                // container.assert({
+                //     height: 68
+                // });
 
                 textBlock.assert({
                     top: container.top.plus(16),

@@ -78,8 +78,8 @@
       }
 
       &:focus:enabled + label::after {
-        border: 1px solid $blue-80;
-        box-shadow: inset 0 0 0 1px $blue-80;
+        border: 1px solid $black-100;
+        box-shadow: inset 0 0 0 1px $black-100;
       }
 
       &:focus:enabled + label::before {

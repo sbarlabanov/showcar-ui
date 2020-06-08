@@ -36,7 +36,7 @@
   &:hover:enabled {
     border-color: $black-100;
   }
-  
+
   &.error:hover:enabled {
     border-color: $color-error-hover;
   }
@@ -49,9 +49,10 @@
     border-color: $color-info-hover;
   }
 
-  &:focus, &:focus:enabled {
-    box-shadow: inset 0 0 0 1px $blue-80;
-    border-color: $blue-80;
+  &:focus,
+  &:focus:enabled {
+    box-shadow: inset 0 0 0 1px $black-100;
+    border-color: $black-100;
   }
 
   &:invalid {
@@ -107,8 +108,9 @@ textarea {
 select.sc-input {
   @include input();
   @extend %customInputStyles;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.5' height='6.2766132' viewBox='0 0 10.5 6.2766132' version='1.1'%3E%3Cpath d='M 0.00436459,0.02846397 4.5788834,4.2192076 9.1532589,0.02881975' stroke-width='1.99967039' transform='translate%28.67 .714%29' stroke='%23949494' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E"); /* stylelint-disable-line string-quotes */
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st1%7Bfill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st2%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23333333;%7D .st3%7Bfill:%23333333;%7D .st4%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23333333;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st5%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st6%7Bfill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st7%7Bfill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;%7D .st8%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%2395C11F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st9%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23E30613;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cpath class='st3' d='M12,18c-0.3,0-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l7.3,7.3l7.3-7.3c0.4-0.4,1-0.4,1.4,0 s0.4,1,0,1.4l-8,8C12.5,17.9,12.3,18,12,18z'/%3E%3C/svg%3E"); /* stylelint-disable-line string-quotes */
   background-repeat: no-repeat;
+  background-size: 18px;
 
   background-position: -100px -100px;
   background-color: $white;
@@ -166,8 +168,8 @@ input[type='checkbox'] {
         background-size: cover;
         position: absolute;
         left: 0;
-        height: 24px;
-        width: 24px;
+        height: 26px;
+        width: 26px;
         top: 0;
         border: 1px solid $black-60;
         transition: border-color $transition-time ease-in;
@@ -192,8 +194,8 @@ input[type='checkbox'] {
     }
 
     &:focus:enabled + label::before {
-      border: 1px solid $blue-80;
-      box-shadow: inset 0 0 0 1px $blue-80;
+      border: 1px solid $black-100;
+      box-shadow: inset 0 0 0 1px $black-100;
     }
   }
 }
@@ -224,8 +226,8 @@ input[type='checkbox'] {
     }
 
     &:checked + label:before {
-      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%20width%3D%2226%22%3E%3Cstyle%20id%3D%22style3%22%20type%3D%22text%2Fcss%22%3E.st0%7Bfill%3A%23333333%3B%7D%3C%2Fstyle%3E%3Cpath%20id%3D%22polygon7%22%20class%3D%22st0%22%20d%3D%22M18.8%206.8l-7.9%207.8-3.8-3.7L5%2013l6%206L21%209z%22%2F%3E%3C%2Fsvg%3E');
-      background-repeat: no-repeat;
+      background: no-repeat center/75%
+        url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st1%7Bfill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st2%7Bfill:%23333333;%7D .st3%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23333333;%7D .st4%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23333333;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st5%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st6%7Bfill:none;stroke:%23C6C6C6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st7%7Bfill:none;stroke:%23333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;%7D .st8%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%2395C11F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D .st9%7Bfill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:%23E30613;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cpath class='st2' d='M9,19c-0.3,0-0.5-0.1-0.7-0.3l-5-5c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0L9,16.6L19.3,6.3c0.4-0.4,1-0.4,1.4,0 s0.4,1,0,1.4l-11,11C9.5,18.9,9.3,19,9,19z'/%3E%3C/svg%3E%0A");
     }
   }
 }
@@ -244,22 +246,22 @@ input[type='checkbox'] {
 
   &:hover {
     + label.sc-toggle {
-      background-color: $black-80;
+      background-color: $google-blue-90;
     }
   }
 
   &:focus:enabled + label.sc-toggle {
-    box-shadow: inset 0 0 0 2px $blue-80;
+    box-shadow: inset 0 0 0 2px $google-blue;
   }
 
   &:active {
     + label.sc-toggle {
-      background-color: $black-90;
+      background-color: $google-blue-90;
     }
   }
 
   &:disabled + label.sc-toggle {
-    background-color: $black-30;
+    background-color: $google-blue-50;
     cursor: not-allowed;
   }
 
@@ -277,10 +279,10 @@ input[type='checkbox'] {
 
     &:hover {
       + label.sc-toggle {
-        background-color: $blue-90;
+        background-color: $google-blue-90;
         as24-icon svg {
-          fill: $blue-90;
-          stroke: $blue-90;
+          fill: $google-blue-90;
+          stroke: $google-blue-90;
           transition: all 100ms ease-in 100ms;
         }
       }
@@ -288,22 +290,22 @@ input[type='checkbox'] {
 
     &:active {
       + label.sc-toggle {
-        background-color: $blue-100;
+        background-color: $google-blue-90;
       }
     }
 
     &:focus {
       + label.sc-toggle {
-        box-shadow: inset 0 0 0 2px $blue-100;
+        box-shadow: inset 0 0 0 2px $google-blue;
       }
     }
 
     &:disabled {
       + label.sc-toggle {
-        background-color: $blue-30;
+        background-color: $google-blue-50;
         as24-icon svg {
-          fill: $blue-30;
-          stroke: $blue-30;
+          fill: $google-blue-50;
+          stroke: $google-blue-50;
         }
       }
     }
@@ -313,12 +315,12 @@ input[type='checkbox'] {
     + label.sc-toggle {
       .sc-toggle-background {
         position: relative;
-        display: flex; 
+        display: flex;
         align-items: center;
         justify-content: center;
 
         as24-icon {
-          opacity: 0;    
+          opacity: 0;
         }
 
         &::before {
@@ -331,7 +333,7 @@ input[type='checkbox'] {
           border: 2px solid $blue-30;
           border-right-color: $color-link;
           transform-origin: center center;
-          animation:loop 1.4s linear infinite;
+          animation: loop 1.4s linear infinite;
         }
 
         @keyframes loop {
@@ -357,21 +359,21 @@ input[type='checkbox'] {
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 2px $blue-80;
+    box-shadow: inset 0 0 0 2px $google-blue;
   }
 
   as24-icon {
     height: 19px;
     width: 19px;
     opacity: 0;
-    
+
     svg {
-      fill: #007cca;
-      stroke: #007cca;
+      fill: $google-blue;
+      stroke: $google-blue;
       stroke-width: 2px;
       padding: $XS;
     }
-  } 
+  }
 
   .sc-toggle-background {
     margin: 2px 0 0 2px;
