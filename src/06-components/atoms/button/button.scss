@@ -185,6 +185,39 @@ $sc-btn-marketing-disabled-text-color: $black-50;
   }
 }
 
+$sc-btn-inverted-background-color: $black-100;
+$sc-btn-inverted-text-color: $white;
+$sc-btn-inverted-hover-background-color: $black-90;
+$sc-btn-inverted-active-background-color: $black-120;
+$sc-btn-inverted-disabled-background-color: $black-20;
+$sc-btn-inverted-disabled-font-color: $black-50;
+
+.sc-btn-bob--inverted {
+  @include button;
+
+  background-color: $sc-btn-inverted-background-color;
+  color: $sc-btn-inverted-text-color;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &:hover {
+    background-color: $sc-btn-inverted-hover-background-color;
+    color: $sc-btn-inverted-text-color;
+  }
+
+  &:active {
+    background-color: $sc-btn-inverted-active-background-color;
+    color: $sc-btn-inverted-text-color;
+  }
+
+  &[disabled] {
+    background-color: $sc-btn-inverted-disabled-background-color;
+    color: $sc-btn-inverted-disabled-font-color;
+  }
+}
+
+
 .sc-btn-block {
   display: block;
   width: 100%;
