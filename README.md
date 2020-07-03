@@ -72,9 +72,9 @@ The showcar-ui library includes some libraries and polyfills:
 
 ### Libraries
 
-- showcar-storage (https://github.com/Scout24/showcar-storage)
-- showcar-icons (also available as standalone fragment) (https://github.com/Scout24/showcar-icons)
-- showcar-tracking (also available as standalone fragment) (https://github.com/Scout24/showcar-tracking)
+- showcar-storage (https://github.com/AutoScout24/showcar-storage)
+- showcar-icons (also available as standalone fragment) (https://github.com/AutoScout24/showcar-icons)
+- showcar-tracking (also available as standalone fragment) (https://github.com/AutoScout24/showcar-tracking)
 - Zepto (zepto-modules v1.0.1 uses Zepto v1.2.0) (https://www.npmjs.com/package/zepto-modules) (http://zeptojs.com/)
 - lazysizes (https://github.com/aFarkas/lazysizes)
 
@@ -91,11 +91,11 @@ The showcar-ui library includes some libraries and polyfills:
 
 ### showcar-storage
 
-You can access the Stroage API via the global `Storage` object. For further information see the documentation under https://github.com/Scout24/showcar-storage
+You can access the Stroage API via the global `Storage` object. For further information see the documentation under https://github.com/AutoScout24/showcar-storage
 
 ### showcar-icons
 
-You can use all the icons defined by showcar-icons with the custom `<as24-icon>` tag. For further information see the documentation under https://github.com/Scout24/showcar-icons
+You can use all the icons defined by showcar-icons with the custom `<as24-icon>` tag. For further information see the documentation under https://github.com/AutoScout24/showcar-icons
 
 ### Zepto
 
@@ -104,7 +104,7 @@ For a detailed usage guide, have a look at http://zeptojs.com/
 
 ## How to use:
 
-for the use of the library have a look at the [documentation](https://scout24.github.io/showcar-ui/).
+for the use of the library have a look at the [documentation](https://autoscout24.github.io/showcar-ui/).
 
 ## How to contribute:
 
