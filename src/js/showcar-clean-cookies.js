@@ -61,7 +61,6 @@ const whiteList = [
     'brand-variation',
     'brand-opt-out',
     'brand-survey-was-shown',
-    'brand-pageview-counter',
     'page-views-feed',
     'last-search-feed',
     'home-feed-bucket',
