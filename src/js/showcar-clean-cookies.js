@@ -61,6 +61,7 @@ const whiteList = [
     'page-views-feed',
     'last-search-feed',
     'home-feed-bucket',
+    'home-feed-location',
     'consentForAds',
     'acExperiment',
 ];
