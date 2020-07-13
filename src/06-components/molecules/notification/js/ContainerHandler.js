@@ -110,6 +110,7 @@ class ContainerHandler {
      * @returns {boolean}
      */
     hasContainer(name) {
+        // eslint-disable-next-line no-prototype-builtins
         return this.containers.hasOwnProperty(name);
     }
 
