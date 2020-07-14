@@ -1,30 +1,69 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
+const webpack = require('webpack-stream');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const destination = 'dist';
 
+const generateWebpackOptions = (output) => {
+    const filename = output;
+    return {
+        mode: 'development',
+        devtool: 'source-map',
+        output: {
+            filename: filename,
+        },
+        module: {
+            rules: [{
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [['@babel/preset-env', { modules: false }]],
+                    cacheDirectory: '.tmp/js',
+                },
+            }],
+        },
+        plugins: [],
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    sourceMap: true,
+                    uglifyOptions: {
+                        warnings: false
+                    }
+                }),
+            ],
+        }
+    };
+};
+
 function js() {
+    const webpackOptions = generateWebpackOptions('showcar-ui.js'); 
     return gulp.src('src/showcar-ui.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        // .pipe(babel({
+        //     presets: ['@babel/env']
+        // }))
+        .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
 
 function icons() {
+    const webpackOptions = generateWebpackOptions('showcar-icons.js'); 
     return gulp.src('src/js/showcar-icons.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        // .pipe(babel({
+        //     presets: ['@babel/env']
+        // }))
+        .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
 
 function tracking() {
+    const webpackOptions = generateWebpackOptions('showcar-tracking.js'); 
     return gulp.src('src/js/showcar-tracking.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        // .pipe(babel({
+        //     presets: ['@babel/env']
+        // }))
+        .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
 
@@ -114,7 +153,7 @@ gulp.task('copy:fragments', done => {
     done();
 });
 
-const compileJs = gulp.series(jsLinter, gulp.parallel(js, icons, tracking));
+const compileJs = gulp.series(jsLinter, gulp.series(js, icons, tracking));
 const compileCss = gulp.series(cssLinter, scss);
 
 const build = gulp.series(compileJs, compileCss, 'copy:fragments', 'replace');
@@ -134,10 +173,6 @@ function serve() {
 }
 
 gulp.task('serve', gulp.series(serve));
-
-// gulp.task('set-dev', () => {
-//     scgulp.config.devmode = true;
-// });
 
 gulp.task('docs:generate', (done) => {
     require('./docs/tasks/generateJson')();
@@ -207,5 +242,66 @@ gulp.task('default', gulp.series('docs:watch'));
 //         // browsers: ['bs_chrome_win'], //only test on chrome
 //     }))
 // ));
+
+// function karmaService() {
+
+//     const plugins = [
+//         'karma-mocha-reporter',
+//         'karma-mocha',
+//         'karma-sinon',
+//         'karma-chai',
+//         'karma-webpack',
+//         'karma-electron',
+//         'karma-firefox-launcher',
+//         'karma-safari-launcher',
+//         'karma-chrome-launcher',
+//         'karma-ie-launcher',
+//         'karma-edge-launcher',
+//         'karma-browserstack-launcher',
+//         'karma-sauce-launcher',
+//         'karma-sourcemap-loader'
+//     ];
+
+//     const frameworks = ['mocha', 'chai', 'sinon'];
+
+//     // let karmaConfig = {
+//     //     // webpack configuration
+//     //     webpack: require('../.webpack.config.js'),
+//     //     webpackMiddleware: {
+//     //         stats: 'errors-only'
+//     //     },
+//     //     // logLevel: 'DEBUG', //keep for debugging
+//     //     browserConsoleLogOptions: {
+//     //         level: 'log',
+//     //         terminal: true
+//     //     },
+//     //     basePath: process.cwd(),
+//     //     files,
+//     //     frameworks,
+//     //     plugins,
+//     //     preprocessors,
+//     //     port: 9876, //fix port, don't change
+//     //     urlRoot,
+//     //     proxies,
+//     //     // use an extended timeout for browsers in case the service is busy
+//     //     browserNoActivityTimeout: 4 * 60000,
+//     //     captureTimeout: 4 * 60000,
+//     //     browserDisconnectTimeout: 4 * 60000,
+//     //     processKillTimeout: 4 * 60000,
+//     //     browserDisconnectTolerance: 1,
+//     // };
+
+
+//     return gulp.src(['**/*.js.map'], {read: false})
+//         .pipe(karma.server({
+//             singleRun: true,
+//             autoWatch: false,
+//             frameworks: frameworks,
+//             browsers: ['Firefox', 'Chrome', 'Safari'],
+//             plugins: plugins
+//         }));
+// }
+
+// gulp.task('test_n', gulp.series('docs:serve', karmaService));
 
 exports.build = build;
