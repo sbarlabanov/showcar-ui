@@ -1,60 +1,28 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const webpack = require('webpack-stream');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const named = require('vinyl-named');
 
 const destination = 'dist';
 
-const generateWebpackOptions = (output) => {
-    const filename = output;
-    return {
-        mode: 'development',
-        devtool: 'source-map',
-        output: {
-            filename: filename,
-        },
-        module: {
-            rules: [{
-                test: /\.js$/,
-                loader: 'babel-loader',
-                options: {
-                    presets: [['@babel/preset-env', { modules: false }]],
-                    cacheDirectory: '.tmp/js',
-                },
-            }],
-        },
-        plugins: [],
-        optimization: {
-            minimizer: [
-                new UglifyJsPlugin({
-                    sourceMap: true,
-                    uglifyOptions: {
-                        warnings: false
-                    }
-                }),
-            ],
-        }
-    };
-};
-
 function js() {
-    const webpackOptions = generateWebpackOptions('showcar-ui.js'); 
     return gulp.src('src/showcar-ui.js')
-        .pipe(webpack(webpackOptions))
+        .pipe(named())
+        .pipe(webpack(require('./webpack.config.js')))
         .pipe(gulp.dest(destination));
 }
 
 function icons() {
-    const webpackOptions = generateWebpackOptions('showcar-icons.js'); 
     return gulp.src('src/js/showcar-icons.js')
-        .pipe(webpack(webpackOptions))
+        .pipe(named())
+        .pipe(webpack(require('./webpack.config.js')))
         .pipe(gulp.dest(destination));
 }
 
 function tracking() {
-    const webpackOptions = generateWebpackOptions('showcar-tracking.js'); 
     return gulp.src('src/js/showcar-tracking.js')
-        .pipe(webpack(webpackOptions))
+        .pipe(named())
+        .pipe(webpack(require('./webpack.config.js')))
         .pipe(gulp.dest(destination));
 }
 

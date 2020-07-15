@@ -14,7 +14,7 @@
     "src"
   ],
   "scripts": {
-    "build": "./node_modules/.bin/gulp build",
+    "build": "NODE_ENV=production ./node_modules/.bin/gulp build",
     "docs": "./node_modules/.bin/gulp docs:generate",
     "docs:serve": "./node_modules/.bin/gulp docs:serve",
     "docs:edit": "./node_modules/.bin/gulp docs:edit",
@@ -68,8 +68,10 @@
     "recursive-readdir-sync": "^1.0.6",
     "sourcemap": "^0.1.0",
     "stylelint": "^13.6.1",
+    "terser": "^4.8.0",
+    "terser-webpack-plugin": "^3.0.6",
     "uglify-js": "^3.10.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vinyl-named": "^1.1.0",
     "webpack": "^4.43.0",
     "webpack-stream": "^5.2.1",
     "yargs": "15.4.1"
