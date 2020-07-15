@@ -40,9 +40,6 @@ const generateWebpackOptions = (output) => {
 function js() {
     const webpackOptions = generateWebpackOptions('showcar-ui.js'); 
     return gulp.src('src/showcar-ui.js')
-        // .pipe(babel({
-        //     presets: ['@babel/env']
-        // }))
         .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
@@ -50,9 +47,6 @@ function js() {
 function icons() {
     const webpackOptions = generateWebpackOptions('showcar-icons.js'); 
     return gulp.src('src/js/showcar-icons.js')
-        // .pipe(babel({
-        //     presets: ['@babel/env']
-        // }))
         .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
@@ -60,9 +54,6 @@ function icons() {
 function tracking() {
     const webpackOptions = generateWebpackOptions('showcar-tracking.js'); 
     return gulp.src('src/js/showcar-tracking.js')
-        // .pipe(babel({
-        //     presets: ['@babel/env']
-        // }))
         .pipe(webpack(webpackOptions))
         .pipe(gulp.dest(destination));
 }
@@ -117,11 +108,6 @@ function cssLinter() {
             process.exit(1);
         });
 }
-
-gulp.task('clean', function () {
-    const del = require('del');
-    return del([`${destination}/**/*`]);
-});
 
 gulp.task('replace', done => {
     const fs = require('fs');
@@ -191,117 +177,70 @@ gulp.task('docs:watch', gulp.series(build), () => {serveDocs(gulp);});
 
 gulp.task('default', gulp.series('docs:watch'));
 
-// const testingParams = {
-//     files: ['.quixoteconf.js'],
-//     preprocessors: {
-//         '.quixoteconf.js': ['webpack', 'sourcemap']
-//     },
-//     proxies: {
-//         '/': 'http://localhost:3000/',
-//     }
-// };
+var karma = require('karma');
+var path = require('path');
+var gutil = require('gulp-util');
+var karmaParseConfig = require('karma/lib/config').parseConfig;
 
-// gulp.task('test', gulp.series('docs:serve', scgulp.karma(
-//     Object.assign({}, testingParams, {
-//         browsers: ['Firefox', 'Chrome', 'Safari']
-//     }))
-// ));
+function runKarma(configFilePath, options, cb) {
 
-// gulp.task('test:fast', gulp.series('docs:serve', scgulp.karma(
-//     Object.assign({}, testingParams, {
-//         browsers: ['Chrome']
-//     }))
-// ));
+    configFilePath = path.resolve(configFilePath);
+  
+    var server = karma.server;
+    var log = gutil.log;
+    var colors = gutil.colors;
+    var config = karmaParseConfig(configFilePath, {});
+  
+    Object.keys(options).forEach(function(key) {
+        config[key] = options[key];
+    });
+  
+    server.start(config, function(exitCode) {
+        log('Karma has exited with ' + colors.red(exitCode));
+        cb();
+        process.exit(exitCode);
+    });
+}
 
-// gulp.task('test:bs', gulp.series('docs:serve', scgulp.karma(
-//     Object.assign({}, testingParams, {
-//         browserStack: {
-//             build: new Date().toLocaleString('de-DE', {
-//                 hour12: false,
-//                 month: '2-digit',
-//                 day: '2-digit',
-//                 hour: '2-digit',
-//                 minute: '2-digit'
-//             }),
-//             project: 'Showcar-ui',
-//         },
-//         // browsers: ['bs_safari_mac', 'bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win', 'bs_iphone6s', 'bs_iphone7'],
-//         browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
-//     }))
-// ));
+gulp.task('test', gulp.series('docs:serve', function (cb) {
+    runKarma('karma.conf.js', {
+        browsers: ['Chrome', 'Firefox', 'Safari']
+    }, cb);
+}));
 
-// gulp.task('test:travis', gulp.series('docs:serve', scgulp.karma(
-//     Object.assign({}, testingParams, {
-//         browserStack: {
-//             project: 'Showcar-ui',
-//         },
-//         // browsers: ['bs_safari_mac', 'bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win', 'bs_iphone6s', 'bs_iphone7'],
-//         // temporary removed iphones
-//         // browsers: ['bs_safari_mac', 'bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
-//         browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],  //temporary remove safari
-//         // browsers: ['bs_chrome_win'], //only test on chrome
-//     }))
-// ));
+gulp.task('test:fast', gulp.series('docs:serve', function (cb) {
+    runKarma('karma.conf.js', {
+        browsers: ['Chrome']
+    }, cb);
+}));
 
-// function karmaService() {
+gulp.task('test:bs', gulp.series('docs:serve', function (cb) {
+    runKarma('karma.conf.js', {
+        browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
+        browserStack: {
+            username: process.env.BROWSERSTACK_USERNAME,
+            accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+            build: new Date().toLocaleString('de-DE', {
+                hour12: false,
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            }),
+            project: 'Showcar-ui',
+        }
+    }, cb);
+}));
 
-//     const plugins = [
-//         'karma-mocha-reporter',
-//         'karma-mocha',
-//         'karma-sinon',
-//         'karma-chai',
-//         'karma-webpack',
-//         'karma-electron',
-//         'karma-firefox-launcher',
-//         'karma-safari-launcher',
-//         'karma-chrome-launcher',
-//         'karma-ie-launcher',
-//         'karma-edge-launcher',
-//         'karma-browserstack-launcher',
-//         'karma-sauce-launcher',
-//         'karma-sourcemap-loader'
-//     ];
-
-//     const frameworks = ['mocha', 'chai', 'sinon'];
-
-//     // let karmaConfig = {
-//     //     // webpack configuration
-//     //     webpack: require('../.webpack.config.js'),
-//     //     webpackMiddleware: {
-//     //         stats: 'errors-only'
-//     //     },
-//     //     // logLevel: 'DEBUG', //keep for debugging
-//     //     browserConsoleLogOptions: {
-//     //         level: 'log',
-//     //         terminal: true
-//     //     },
-//     //     basePath: process.cwd(),
-//     //     files,
-//     //     frameworks,
-//     //     plugins,
-//     //     preprocessors,
-//     //     port: 9876, //fix port, don't change
-//     //     urlRoot,
-//     //     proxies,
-//     //     // use an extended timeout for browsers in case the service is busy
-//     //     browserNoActivityTimeout: 4 * 60000,
-//     //     captureTimeout: 4 * 60000,
-//     //     browserDisconnectTimeout: 4 * 60000,
-//     //     processKillTimeout: 4 * 60000,
-//     //     browserDisconnectTolerance: 1,
-//     // };
-
-
-//     return gulp.src(['**/*.js.map'], {read: false})
-//         .pipe(karma.server({
-//             singleRun: true,
-//             autoWatch: false,
-//             frameworks: frameworks,
-//             browsers: ['Firefox', 'Chrome', 'Safari'],
-//             plugins: plugins
-//         }));
-// }
-
-// gulp.task('test_n', gulp.series('docs:serve', karmaService));
+gulp.task('test:travis', gulp.series('docs:serve', function (cb) {
+    runKarma('karma.conf.js', {
+        browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
+        browserStack: {
+            username: process.env.BROWSERSTACK_USERNAME,
+            accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+            project: 'Showcar-ui',
+        }
+    }, cb);
+}));
 
 exports.build = build;
