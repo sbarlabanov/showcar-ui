@@ -145,29 +145,26 @@ gulp.task('docs:watch', gulp.series(build), () => {serveDocs(gulp);});
 
 gulp.task('default', gulp.series('docs:watch'));
 
-var karma = require('karma');
 var path = require('path');
-var gutil = require('gulp-util');
 var karmaParseConfig = require('karma/lib/config').parseConfig;
 
 function runKarma(configFilePath, options, cb) {
 
     configFilePath = path.resolve(configFilePath);
   
-    var server = karma.server;
-    var log = gutil.log;
-    var colors = gutil.colors;
+    var Server = require('karma').Server;
     var config = karmaParseConfig(configFilePath, {});
   
     Object.keys(options).forEach(function(key) {
         config[key] = options[key];
     });
   
-    server.start(config, function(exitCode) {
-        log('Karma has exited with ' + colors.red(exitCode));
+    var server = new Server(config, function(exitCode) {
         cb();
         process.exit(exitCode);
     });
+
+    server.start();
 }
 
 gulp.task('test', gulp.series('docs:serve', function (cb) {
@@ -200,15 +197,21 @@ gulp.task('test:bs', gulp.series('docs:serve', function (cb) {
     }, cb);
 }));
 
-gulp.task('test:travis', gulp.series('docs:serve', function (cb) {
-    runKarma('karma.conf.js', {
-        browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
-        browserStack: {
-            username: process.env.BROWSERSTACK_USERNAME,
-            accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-            project: 'Showcar-ui',
-        }
-    }, cb);
-}));
+gulp.task('test:travis', gulp.series(
+    'docs:serve', 
+    function (cb) {
+        runKarma('karma.conf.js', {
+            browsers: ['bs_chrome_win', 'bs_firefox_win', 'bs_edge_win', 'bs_ie11_win'],
+            browserStack: {
+                username: process.env.BROWSERSTACK_USERNAME,
+                accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+                project: 'Showcar-ui',
+                timeout: 60 * 4
+            },
+            reporters: ['mocha'],
+            concurrency: 1
+        }, cb);
+    }
+));
 
 exports.build = build;

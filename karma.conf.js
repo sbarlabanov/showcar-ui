@@ -5,13 +5,15 @@ module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: process.cwd(),
     
         plugins: [ 
             require('karma-quixote'), 
             'karma-webpack', 
             'karma-sourcemap-loader', 
             'karma-mocha',
+            'karma-mocha-reporter',
+            'karma-sinon',
             'karma-chai',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
@@ -21,12 +23,13 @@ module.exports = function(config) {
     
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha', 'chai', 'quixote'],
+        frameworks: ['mocha', 'chai', 'sinon', 'quixote'],
     
     
         // list of files / patterns to load in the browser
         files: [
-            '.quixoteconf.js'
+            '.quixoteconf.js',
+            { pattern: '**/*.js.map', included: false, watched: false }
         ],
     
     
@@ -43,9 +46,7 @@ module.exports = function(config) {
             '.quixoteconf.js': ['webpack', 'sourcemap']
         },
     
-        webpack: {
-            devtool: 'inline-source-map'
-        },
+        webpack: require('./webpack.config.js'),
     
         webpackMiddleware: {
             // webpack-dev-middleware configuration
@@ -70,7 +71,11 @@ module.exports = function(config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
-    
+
+        browserConsoleLogOptions: {
+            level: 'log',
+            terminal: true
+        },
     
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: false,
@@ -136,6 +141,12 @@ module.exports = function(config) {
                 os: 'Windows',
                 os_version: '10'
             }
-        }
+        },
+
+        browserNoActivityTimeout: 5 * 60000,
+        captureTimeout: 5 * 60000,
+        browserDisconnectTimeout: 5 * 60000,
+        processKillTimeout: 5 * 60000,
+        browserDisconnectTolerance: 2
     });
 };

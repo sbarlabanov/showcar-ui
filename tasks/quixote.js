@@ -68,7 +68,7 @@ module.exports = (config) => {
             if (index === 0) {
                 setTimeout(() => {
                     window.__karma__.start(); //execute mocha
-                }, 2000); // browserStack - safari extra timeout
+                }, 5000); // browserStack - safari extra timeout
             }
         });
 
