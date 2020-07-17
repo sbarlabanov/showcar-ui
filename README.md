@@ -56,6 +56,8 @@ Make sure to replace the @@ASSET_PATH string with the path to the JS/CSS file.
 
 You can check development state of the library on home, list and detail page with a parameter `?toguru=sc_develop%3dtrue`.
 
+You can also check your branch on home, list and detail using `sc_branch=Your-Branch-Name-Here` as request parameter. Example: https://www.autoscout24.de/auto-verkaufen/?sc_branch=UGACT-24-Support-ES6
+
 ## How to test fragments with toggles
 
 You can check any branch of the library on your page with parameter `?toguru=sc_develop%3dtest-branch` where `test-branch` is the name of the desired branch.
