@@ -123,21 +123,21 @@ module.exports = function(config) {
             bs_firefox_win: {
                 base: 'BrowserStack',
                 browser: 'Firefox',
-                browser_version: '78.0',
+                browser_version: 'latest',
                 os: 'Windows',
                 os_version: '10'
             },
             bs_edge_win: {
                 base: 'BrowserStack',
                 browser: 'Edge',
-                browser_version: '14.0',
+                browser_version: 'latest',
                 os: 'Windows',
                 os_version: '10'
             },
             bs_ie11_win: {
                 base: 'BrowserStack',
                 browser: 'IE',
-                browser_version: '11.0',
+                browser_version: 'latest',
                 os: 'Windows',
                 os_version: '10'
             }
