@@ -6,7 +6,4 @@ var config = {
         require.context('./src/', true, /^((?!tag|notification|navigation|tooltip|input-group).)*(specs.js)$/),
     ]
 };
-require('showcar-gulp/gulptasks/quixote.js')(config);
-// require.context('./src/06-components/molecules/', true, /\.specs.js$/),
-// require.context('./src/06-components/organisms/', true, /^((?!navigation).)*(specs.js)$/),
-// require.context('./src/07-utilities/', true, /\.specs.js$/),
+require('./tasks/quixote.js')(config);
