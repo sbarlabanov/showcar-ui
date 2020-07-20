@@ -123,7 +123,7 @@ module.exports = function(config) {
             bs_firefox_win: {
                 base: 'BrowserStack',
                 browser: 'Firefox',
-                browser_version: '61.0',
+                browser_version: '78.0',
                 os: 'Windows',
                 os_version: '10'
             },
