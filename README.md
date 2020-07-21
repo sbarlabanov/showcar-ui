@@ -38,6 +38,18 @@ You can run tests locally in Chrome:
 
     gulp test:fast
 
+## How to publish an npm package
+
+From master branch
+
+    yarn build
+
+If you see after unning build some files in dist please commit it
+
+    npm version patch|minor|major
+    npm publish
+
+
 ### Interacting w/ local changes
 
 You can preview/interact with the local changes by running `yarn run docs:serve`. This will generate the docs & launch a server where you can look at them, running the local version of showcar-ui
