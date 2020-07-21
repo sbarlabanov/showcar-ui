@@ -48,6 +48,7 @@ If you see after unning build some files in dist please commit it
 
     npm version patch|minor|major
     npm publish
+    git push --follow-tags
 
 
 ### Interacting w/ local changes
