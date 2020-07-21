@@ -37,7 +37,6 @@ const whiteList = [
     'optimizelyRedirectData',
     'optimizelyReferrer',
     'showTsm',
-    'isAdBlockerUsed3',
     'urugot-bucket',
     'PLAY_SESSION',
     'gaid',
