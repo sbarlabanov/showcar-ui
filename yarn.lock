@@ -8811,9 +8811,9 @@ showcar-carousel@^4.4.2:
   resolved "https://registry.yarnpkg.com/showcar-carousel/-/showcar-carousel-4.4.2.tgz#80ca1f4211657a0699f060689f9be8771c2f6c9e"
   integrity sha512-OwZuoJoXYzwQDx9GWcCFbFDAllisLTh9VH/U9BtwJS0SMrVRPoYaDKdQDhGU+vgOZqgyHrKm3/IZG9vMiro4tw==
 
-"showcar-icons@https://github.com/Autoscout24/showcar-icons.git#rebranded":
+"showcar-icons@https://github.com/Autoscout24/showcar-icons.git":
   version "0.7.2"
-  resolved "https://github.com/Autoscout24/showcar-icons.git#c24f6bc692de8a23b839fada0a3471c755f94d37"
+  resolved "https://github.com/Autoscout24/showcar-icons.git#5795662750c71ac9bbf181ff8cbf1129a1dad251"
 
 showcar-pictures@^3.1.3:
   version "3.1.3"
