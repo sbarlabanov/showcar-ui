@@ -25,7 +25,6 @@ const whiteList = [
     'optimizelyPendingLogEvents',
     'optimizelyEndUserId',
     '_asse',
-    '_asga',
     '_asga_gid',
     '_gat_ALL',
     'optimizelyRedirectData',
