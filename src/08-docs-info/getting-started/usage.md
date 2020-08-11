@@ -51,13 +51,11 @@ need assistance please contact the Web Experience Team.
 
 #### Build locally:
 
-For building locally you can use the showcar-gulp build pipeline template: <a href="https://github.com/Scout24/showcar-gulp">https://github.com/Scout24/showcar-gulp</a>
-
 1.
 Clone repository
 
 ```bash
-git clone git@github.com:Scout24/showcar-ui.git
+git clone git@github.com:AutoScout24/showcar-ui.git
 ```
 
 2.
