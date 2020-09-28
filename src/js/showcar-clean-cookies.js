@@ -54,6 +54,7 @@ const whiteList = [
     'sso',
     'group',
     '.+\\.as24ident',
+    'disable-cmp'
 ];
 
 const deleteCookieByName = function(cookie) {
