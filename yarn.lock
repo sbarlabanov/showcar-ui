@@ -8802,25 +8802,21 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
-showcar-carousel@^4.3.4:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/showcar-carousel/-/showcar-carousel-4.4.1.tgz#7e1c347ded96a6cc1633287299a6f64524194f3f"
-
-showcar-carousel@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/showcar-carousel/-/showcar-carousel-4.4.2.tgz#80ca1f4211657a0699f060689f9be8771c2f6c9e"
-  integrity sha512-OwZuoJoXYzwQDx9GWcCFbFDAllisLTh9VH/U9BtwJS0SMrVRPoYaDKdQDhGU+vgOZqgyHrKm3/IZG9vMiro4tw==
+showcar-carousel@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/showcar-carousel/-/showcar-carousel-4.5.0.tgz#5e125e4a3737ad8be25e532fc8c2e39ce998e12e"
+  integrity sha512-2rky/OpwQeVh7DBJC2QKBFXikzzYmYhDfCpu+8ntVJf9i/2LE/SmEutWvqbJdasXpvbN8RJ2bSLHq1+F1a2mAA==
 
 "showcar-icons@https://github.com/Autoscout24/showcar-icons.git":
   version "0.7.2"
   resolved "https://github.com/Autoscout24/showcar-icons.git#5795662750c71ac9bbf181ff8cbf1129a1dad251"
 
-showcar-pictures@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/showcar-pictures/-/showcar-pictures-3.1.3.tgz#13fdd7b0ad09d3b0bcf498205eecc538a31e0c1a"
-  integrity sha512-Oq30Du0QiqV3hM0RxPsWZa9LSBYGnKRObR18yYAx63jfbS85vyvhi3bVHygcHM15N1ADkfBcnewDfGBrgUm+SQ==
+showcar-pictures@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/showcar-pictures/-/showcar-pictures-3.2.0.tgz#7d2d3becc279abbf39a0f20312ee42b7dc4ae05a"
+  integrity sha512-80jHjtPBa179VlCKRB6pWrNk9qQGBgAnxxXRYcE6WDKRciTAL/Sf/itNiSdjREfN+Vc0jSMx/HFSsatn+MInTQ==
   dependencies:
-    showcar-carousel "^4.4.2"
+    showcar-carousel "^4.5.0"
 
 showcar-storage@^1.1.1:
   version "1.1.1"
