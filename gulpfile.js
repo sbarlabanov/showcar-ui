@@ -126,8 +126,8 @@ gulp.task('docs:serve', done => {
     serveDocs(gulp);
     done();
 });
-gulp.task('docs:edit', gulp.series(build), () => {serveDocs(gulp);});
-gulp.task('docs:watch', gulp.series(build), () => {serveDocs(gulp);});
+gulp.task('docs:edit', gulp.series(build, () => {serveDocs(gulp);}));
+gulp.task('docs:watch', gulp.series(build, () => {serveDocs(gulp);}));
 
 gulp.task('default', gulp.series('docs:watch'));
 
