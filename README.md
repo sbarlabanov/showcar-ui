@@ -21,16 +21,18 @@ We are using _node 10.16.0_ version for build. Make sure you have it installed. 
 
 and follow the instructions
 
-For building on your local machine install all npm packages first. Then you can use the gulp command to run the build:
+For building on your local machine install all npm packages first. 
 
     yarn
-    npm run build
+    yarn run build
 
 ## How to run locally:
 
 You can use the gulp default command to run the build locally:
 
     gulp
+
+and open `http://localhost:5000` in your browser to see the showcar docs locally.
 
 ## How to run tests locally:
 
