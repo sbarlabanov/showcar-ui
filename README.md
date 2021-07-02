@@ -87,6 +87,8 @@ and check `localhost:8080/test/showcar-ui-toggled-fragment.html?toguru=sc_develo
 
 ![build pipeline](docs/build-pipeline.jpeg)
 
+Source: https://miro.com/app/board/o9J_l8FFfQY=/
+
 ## Additional information
 
 The showcar-ui library includes some libraries and polyfills:
