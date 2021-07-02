@@ -83,6 +83,10 @@ docker-compose up
 
 and check `localhost:8080/test/showcar-ui-toggled-fragment.html?toguru=sc_develop%3dtest-branch` where `test-branch` is the name of the branch to test
 
+## Build Pipeline
+
+![build pipeline](docs/build-pipeline.jpeg)
+
 ## Additional information
 
 The showcar-ui library includes some libraries and polyfills:
