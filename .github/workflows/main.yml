@@ -6,52 +6,13 @@ jobs:
     steps:
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Use nvm version
+        uses: actions/setup-node@v2
         with:
-          path: main
-      - name: Check out release branch
-        uses: actions/checkout@v2
-        with:
-          ref: kamils-release-branch
-          path: release
-      - run: pwd && ls
-      - run: pwd && ls
-        working-directory: main
-      - run: pwd && ls
-        working-directory: release
-#       - run: |
-#           pwd
-#           cd main
-#           pwd && ls
-#       - name: Read .nvmrc
-#         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-#         id: nvm
-#       - name: Use nvm version
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-#       - run: yarn
-#       - run: yarn run build
-#       - run: yarn run docs
-#       - run: cd ..
-#       - run: cd ./main
-#       - run: ls
-#       - run: |
-#           shopt -s extglob
-#           rm -rf ./!(.git*|.|..)
-#       - run: ls
-#       - run: cd ../release
-#       - run: ls
-#       - run: |
-#           cp -r ../dist .
-#           cp -r ../src .
-#           cp -r ../deploy .
-#           cp ../package.json .
-#           cp ../README.md .
-#           cp ../LICENSE.md .
-#           cp ../Jenkinsfile .
-#       - run: |
-#           git config user.name github-actions
-#           git config user.email github-actions@github.com
-#           git add . -A
-#           git commit -m "generated"
-#           git push
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - run: yarn
+      - run: yarn run build
+      - run: yarn run docs

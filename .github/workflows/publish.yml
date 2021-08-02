@@ -3,22 +3,50 @@ on:
   workflow_run:
     workflows: ["Build and Test"]
     branches:
-      - master
+      - UGACT-569-Migrate-To-Github-Actions
     types:
       - completed
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
+        with:
+          path: main
+      - name: Check out release branch
+        uses: actions/checkout@v2
+        with:
+          ref: kamils-release-branch
+          path: release
       - name: Read .nvmrc
+        working-directory: main
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Use nvm version
         uses: actions/setup-node@v2
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-      - run: yarn
-      - run: yarn run build
-      - run: yarn run docs
+      - name: Build
+        run: |
+          yarn
+          yarn run build
+          yarn run docs
+        working-directory: main
+      - name: Copy files
+        run: |
+          cp -r ../main/dist .
+          cp -r ../main/src .
+          cp -r ../main/deploy .
+          cp ../main/package.json .
+          cp ../main/README.md .
+          cp ../main/LICENSE.md .
+          cp ../main/Jenkinsfile .
+        working-directory: release
+      - name: Commit and push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add . -A
+          git commit -m "generated"
+          git push
