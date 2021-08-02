@@ -5,7 +5,7 @@ on:
     branches: [UGACT-569-Migrate-To-Github-Actions]
   # workflow_run:
   #   workflows: ["Build and Test"]
-  #   # branches: [UGACT-569-Migrate-To-Github-Actions]
+  #   # branches: [master]
   #   types: [completed]
 
 jobs:
@@ -47,9 +47,9 @@ jobs:
         working-directory: release
       - name: Commit and push
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.event.pusher.name }}
+          git config user.email ${{ github.event.pusher.email }}
           git add . -A
-          git commit -m "generated"
+          git commit -m ${{ github.event.head_commit.message }}
           git push
         working-directory: release
