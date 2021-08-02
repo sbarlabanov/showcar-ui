@@ -1,10 +1,12 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows: ["Build and Test"]
-    # branches: [UGACT-569-Migrate-To-Github-Actions]
-    types: [completed]
+  push:
+    branches: [UGACT-569-Migrate-To-Github-Actions]
+  # workflow_run:
+  #   workflows: ["Build and Test"]
+  #   # branches: [UGACT-569-Migrate-To-Github-Actions]
+  #   types: [completed]
 
 jobs:
   build:
