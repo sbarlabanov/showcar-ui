@@ -1,7 +1,13 @@
-name: Showcar-Ui
-on: [push]
+name: Publish
+on:
+  workflow_run:
+    workflows: ["Build and Test"]
+    branches:
+      - master
+    types:
+      - completed
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -13,10 +19,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - run: yarn
       - run: yarn run build
       - run: yarn run docs
