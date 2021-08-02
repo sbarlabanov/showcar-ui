@@ -12,7 +12,6 @@ jobs:
           pwd
           cd main
           pwd && ls
-          cd main
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
