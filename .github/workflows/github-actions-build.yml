@@ -1,7 +1,7 @@
 name: Showcar-Ui
 on: [push]
 jobs:
-  Build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -9,9 +9,14 @@ jobs:
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
-      - uses: actions/setup-node@v2
+      - name: Use nvm version
+        uses: actions/setup-node@v2
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - run: yarn
       - run: yarn run build
       - run: yarn run docs
