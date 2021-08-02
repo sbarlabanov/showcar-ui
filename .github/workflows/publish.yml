@@ -35,7 +35,7 @@ jobs:
           yarn run build
           yarn run docs
         working-directory: main
-      - name: Copy files
+      - name: Copy files to release branch
         run: |
           cp -r ../main/dist .
           cp -r ../main/src .
@@ -52,3 +52,4 @@ jobs:
           git add . -A
           git commit -m "generated"
           git push
+        working-directory: release
