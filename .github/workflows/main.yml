@@ -23,7 +23,7 @@ jobs:
 
   publish-release:
     needs: build
-    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }} #refs/heads/main
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying to production server on branch $GITHUB_REF"
@@ -34,7 +34,7 @@ jobs:
       - name: Check out release branch
         uses: actions/checkout@v2
         with:
-          ref: kamils-release-branch
+          ref: release
           path: release
       - name: Read .nvmrc
         working-directory: main
@@ -71,7 +71,7 @@ jobs:
 
   publish-docs:
     needs: build
-    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }} #refs/heads/main
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying branch $GITHUB_REF to gh-pages branch"
@@ -82,7 +82,7 @@ jobs:
       - name: Check out gh-pages branch
         uses: actions/checkout@v2
         with:
-          ref: kamils-gh-pages
+          ref: gh-pages
           path: gh-pages
       - name: Read .nvmrc
         working-directory: main
