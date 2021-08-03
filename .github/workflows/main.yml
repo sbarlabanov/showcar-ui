@@ -30,7 +30,7 @@ jobs:
   publish-release:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/$MASTER_BRANCH' }}
+    if: ${{ github.ref == 'refs/heads/${{env.MASTER_BRANCH}}' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -38,14 +38,14 @@ jobs:
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
-          path: $MASTER_BRANCH
-      - name: Check out $RELEASE_BRANCH branch
+          path: ${{env.MASTER_BRANCH}}
+      - name: Check out ${{env.RELEASE_BRANCH}} branch
         uses: actions/checkout@v2
         with:
-          ref: $RELEASE_BRANCH
-          path: $RELEASE_BRANCH
+          ref: ${{env.RELEASE_BRANCH}}
+          path: ${{env.RELEASE_BRANCH}}
       - name: Read .nvmrc
-        working-directory: $MASTER_BRANCH
+        working-directory: ${{env.MASTER_BRANCH}}
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Use nvm version
@@ -57,17 +57,17 @@ jobs:
           yarn
           yarn run build
           yarn run docs
-        working-directory: $MASTER_BRANCH
-      - name: Copy files to $RELEASE_BRANCH branch
+        working-directory: ${{env.MASTER_BRANCH}}
+      - name: Copy files to ${{env.RELEASE_BRANCH}} branch
         run: |
-          cp -r ../$MASTER_BRANCH/dist .
-          cp -r ../$MASTER_BRANCH/src .
-          cp -r ../$MASTER_BRANCH/deploy .
-          cp ../$MASTER_BRANCH/package.json .
-          cp ../$MASTER_BRANCH/README.md .
-          cp ../$MASTER_BRANCH/LICENSE.md .
-          cp ../$MASTER_BRANCH/Jenkinsfile .
-        working-directory: $RELEASE_BRANCH
+          cp -r ../${{env.MASTER_BRANCH}}/dist .
+          cp -r ../${{env.MASTER_BRANCH}}/src .
+          cp -r ../${{env.MASTER_BRANCH}}/deploy .
+          cp ../${{env.MASTER_BRANCH}}/package.json .
+          cp ../${{env.MASTER_BRANCH}}/README.md .
+          cp ../${{env.MASTER_BRANCH}}/LICENSE.md .
+          cp ../${{env.MASTER_BRANCH}}/Jenkinsfile .
+        working-directory: ${{env.RELEASE_BRANCH}}
       - name: Commit and push
         run: |
           git config user.name ${{ github.event.pusher.name }}
@@ -75,27 +75,27 @@ jobs:
           git add . -A
           git commit -m "${{ github.event.head_commit.message }}"
           git push
-        working-directory: $RELEASE_BRANCH
+        working-directory: ${{env.RELEASE_BRANCH}}
 
   publish-docs:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/$MASTER_BRANCH' }}
+    if: ${{ github.ref == 'refs/heads/${{env.MASTER_BRANCH}}' }}
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Deploying branch $GITHUB_REF to $DOCS_BRANCH branch"
+      - run: echo "Deploying branch $GITHUB_REF to ${{env.DOCS_BRANCH}} branch"
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
-          path: $MASTER_BRANCH
-      - name: Check out $DOCS_BRANCH branch
+          path: ${{env.MASTER_BRANCH}}
+      - name: Check out ${{env.DOCS_BRANCH}} branch
         uses: actions/checkout@v2
         with:
-          ref: $DOCS_BRANCH
-          path: $DOCS_BRANCH
+          ref: ${{env.DOCS_BRANCH}}
+          path: ${{env.DOCS_BRANCH}}
       - name: Read .nvmrc
-        working-directory: $MASTER_BRANCH
+        working-directory: ${{env.MASTER_BRANCH}}
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Use nvm version
@@ -107,15 +107,15 @@ jobs:
           yarn
           yarn run build
           yarn run docs
-        working-directory: $MASTER_BRANCH
-      - name: Copy files to $DOCS_BRANCH branch
+        working-directory: ${{env.MASTER_BRANCH}}
+      - name: Copy files to ${{env.DOCS_BRANCH}} branch
         run: |
-          cp -r ../$MASTER_BRANCH/docs/* .
+          cp -r ../${{env.MASTER_BRANCH}}/docs/* .
           mkdir -p docs/assets/
           mv assets/* docs/
           rmdir assets
-          cp -r ../$MASTER_BRANCH/dist .
-        working-directory: $DOCS_BRANCH
+          cp -r ../${{env.MASTER_BRANCH}}/dist .
+        working-directory: ${{env.DOCS_BRANCH}}
       - name: Commit and push
         run: |
           git config user.name ${{ github.event.pusher.name }}
@@ -123,4 +123,4 @@ jobs:
           git add . -A
           git commit -m "${{ github.event.head_commit.message }}"
           git push
-        working-directory: $DOCS_BRANCH
+        working-directory: ${{env.DOCS_BRANCH}}
