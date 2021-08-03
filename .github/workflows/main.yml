@@ -76,6 +76,8 @@ jobs:
           path: artifacts/others
       - name: Copy files to ${{env.RELEASE_BRANCH}} branch
         run: |
+          git rm -rf .
+          git clean -fxd
           cp -r ../artifacts/dist .
           cp -r ../artifacts/others/src .
           cp -r ../artifacts/others/deploy .
@@ -118,6 +120,8 @@ jobs:
           path: artifacts/docs
       - name: Copy files to ${{env.DOCS_BRANCH}} branch
         run: |
+          git rm -rf .
+          git clean -fxd
           cp -r ../artifacts/docs/* .
           mkdir -p docs/assets/
           mv assets/* docs/
