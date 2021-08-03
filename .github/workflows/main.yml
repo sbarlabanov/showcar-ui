@@ -54,7 +54,8 @@ jobs:
         with:
           ref: ${{env.RELEASE_BRANCH}}
           path: ${{env.RELEASE_BRANCH}}
-      - uses: actions/download-artifact@v2
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
         with:
           name: artifacts
           path: artifacts
@@ -90,17 +91,23 @@ jobs:
         with:
           ref: ${{env.DOCS_BRANCH}}
           path: ${{env.DOCS_BRANCH}}
-      - uses: actions/download-artifact@v2
+      - name: download dist artifacts
+        uses: actions/download-artifact@v2
         with:
-          name: artifacts
-          path: artifacts
+          name: dist
+          path: artifacts/dist
+      - name: download docs artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: docs
+          path: artifacts/dist
       - name: Copy files to ${{env.DOCS_BRANCH}} branch
         run: |
-          cp -r ../artifacts/docs/* .
+          cp -r ../docs/* .
           mkdir -p docs/assets/
           mv assets/* docs/
           rmdir assets
-          cp -r ../artifacts/dist .
+          cp -r ../dist .
         working-directory: ${{env.DOCS_BRANCH}}
       - name: Commit and push
         run: |
