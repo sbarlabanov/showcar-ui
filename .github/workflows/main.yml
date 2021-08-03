@@ -30,7 +30,7 @@ jobs:
   publish-release:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/${{env.MASTER_BRANCH}}' }}
+    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -80,7 +80,7 @@ jobs:
   publish-docs:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/${{env.MASTER_BRANCH}}' }}
+    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }}
     runs-on: ubuntu-latest
 
     steps:
