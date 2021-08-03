@@ -1,10 +1,16 @@
 name: Build + Publish
 
 on: [push]
+env:
+  MASTER_BRANCH: master
+  RELEASE_BRANCH: release
+  DOCS_BRANCH: gh-pages
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
@@ -22,22 +28,24 @@ jobs:
           yarn run docs
 
   publish-release:
+
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/$MASTER_BRANCH' }}
     runs-on: ubuntu-latest
+
     steps:
       - run: echo "Deploying to production server on branch $GITHUB_REF"
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
-          path: main
-      - name: Check out release branch
+          path: $MASTER_BRANCH
+      - name: Check out $RELEASE_BRANCH branch
         uses: actions/checkout@v2
         with:
-          ref: release
-          path: release
+          ref: $RELEASE_BRANCH
+          path: $RELEASE_BRANCH
       - name: Read .nvmrc
-        working-directory: main
+        working-directory: $MASTER_BRANCH
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Use nvm version
@@ -49,17 +57,17 @@ jobs:
           yarn
           yarn run build
           yarn run docs
-        working-directory: main
-      - name: Copy files to release branch
+        working-directory: $MASTER_BRANCH
+      - name: Copy files to $RELEASE_BRANCH branch
         run: |
-          cp -r ../main/dist .
-          cp -r ../main/src .
-          cp -r ../main/deploy .
-          cp ../main/package.json .
-          cp ../main/README.md .
-          cp ../main/LICENSE.md .
-          cp ../main/Jenkinsfile .
-        working-directory: release
+          cp -r ../$MASTER_BRANCH/dist .
+          cp -r ../$MASTER_BRANCH/src .
+          cp -r ../$MASTER_BRANCH/deploy .
+          cp ../$MASTER_BRANCH/package.json .
+          cp ../$MASTER_BRANCH/README.md .
+          cp ../$MASTER_BRANCH/LICENSE.md .
+          cp ../$MASTER_BRANCH/Jenkinsfile .
+        working-directory: $RELEASE_BRANCH
       - name: Commit and push
         run: |
           git config user.name ${{ github.event.pusher.name }}
@@ -67,25 +75,27 @@ jobs:
           git add . -A
           git commit -m "${{ github.event.head_commit.message }}"
           git push
-        working-directory: release
+        working-directory: $RELEASE_BRANCH
 
   publish-docs:
+
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/$MASTER_BRANCH' }}
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Deploying branch $GITHUB_REF to gh-pages branch"
+      - run: echo "Deploying branch $GITHUB_REF to $DOCS_BRANCH branch"
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
-          path: main
-      - name: Check out gh-pages branch
+          path: $MASTER_BRANCH
+      - name: Check out $DOCS_BRANCH branch
         uses: actions/checkout@v2
         with:
-          ref: gh-pages
-          path: gh-pages
+          ref: $DOCS_BRANCH
+          path: $DOCS_BRANCH
       - name: Read .nvmrc
-        working-directory: main
+        working-directory: $MASTER_BRANCH
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Use nvm version
@@ -97,15 +107,15 @@ jobs:
           yarn
           yarn run build
           yarn run docs
-        working-directory: main
-      - name: Copy files to gh-pages branch
+        working-directory: $MASTER_BRANCH
+      - name: Copy files to $DOCS_BRANCH branch
         run: |
-          cp -r ../main/docs/* .
+          cp -r ../$MASTER_BRANCH/docs/* .
           mkdir -p docs/assets/
           mv assets/* docs/
           rmdir assets
-          cp -r ../main/dist .
-        working-directory: gh-pages
+          cp -r ../$MASTER_BRANCH/dist .
+        working-directory: $DOCS_BRANCH
       - name: Commit and push
         run: |
           git config user.name ${{ github.event.pusher.name }}
@@ -113,4 +123,4 @@ jobs:
           git add . -A
           git commit -m "${{ github.event.head_commit.message }}"
           git push
-        working-directory: gh-pages
+        working-directory: $DOCS_BRANCH
