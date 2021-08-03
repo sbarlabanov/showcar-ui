@@ -2,9 +2,9 @@ name: Build + Publish
 
 on: [push]
 env:
-  MASTER_BRANCH: master
-  RELEASE_BRANCH: release-branch
-  DOCS_BRANCH: gh-pages
+  MASTER_BRANCH: UGACT-569-Migrate-To-Github-Actions
+  RELEASE_BRANCH: kamils-release-branch
+  DOCS_BRANCH: kamils-gh-pages
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
   publish-release:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -80,7 +80,7 @@ jobs:
   publish-docs:
 
     needs: build
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/UGACT-569-Migrate-To-Github-Actions' }}
     runs-on: ubuntu-latest
 
     steps:
