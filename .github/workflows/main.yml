@@ -2,9 +2,9 @@ name: Build + Publish
 
 on: [push]
 env:
-  MASTER_BRANCH: master
-  RELEASE_BRANCH: release
-  DOCS_BRANCH: gh-pages
+  MASTER_BRANCH: UGACT-569-Migrate-To-Github-Actions
+  RELEASE_BRANCH: kamils-release-branch
+  DOCS_BRANCH: kamils-gh-pages
 
 jobs:
   build:
