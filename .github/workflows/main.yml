@@ -26,15 +26,25 @@ jobs:
           yarn
           yarn run build
           yarn run docs
-      - name: upload artifacts
+      - name: upload dist artifact
         uses: actions/upload-artifact@v2
         with:
-          name: artifacts
+          name: dist
+          path: dist
+          retention-days: 1
+      - name: upload docs artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: docs
+          retention-days: 1
+      - name: upload others
+        uses: actions/upload-artifact@v2
+        with:
+          name: others
           path: |
-            dist
             src
             deploy
-            docs
             package.json
             README.md
             LICENSE.md
@@ -54,20 +64,25 @@ jobs:
         with:
           ref: ${{env.RELEASE_BRANCH}}
           path: ${{env.RELEASE_BRANCH}}
-      - name: Download artifacts
+      - name: Download dist artifacts
         uses: actions/download-artifact@v2
         with:
-          name: artifacts
-          path: artifacts
+          name: dist
+          path: artifacts/dist
+      - name: Download others artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: others
+          path: artifacts/others
       - name: Copy files to ${{env.RELEASE_BRANCH}} branch
         run: |
           cp -r ../artifacts/dist .
-          cp -r ../artifacts/src .
-          cp -r ../artifacts/deploy .
-          cp ../artifacts/package.json .
-          cp ../artifacts/README.md .
-          cp ../artifacts/LICENSE.md .
-          cp ../artifacts/Jenkinsfile .
+          cp -r ../artifacts/others/src .
+          cp -r ../artifacts/others/deploy .
+          cp ../artifacts/others/package.json .
+          cp ../artifacts/others/README.md .
+          cp ../artifacts/others/LICENSE.md .
+          cp ../artifacts/others/Jenkinsfile .
         working-directory: ${{env.RELEASE_BRANCH}}
       - name: Commit and push
         run: |
@@ -100,14 +115,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: docs
-          path: artifacts/dist
+          path: artifacts/docs
       - name: Copy files to ${{env.DOCS_BRANCH}} branch
         run: |
-          cp -r ../docs/* .
+          cp -r ../artifacts/docs/* .
           mkdir -p docs/assets/
           mv assets/* docs/
           rmdir assets
-          cp -r ../dist .
+          cp -r ../artifacts/dist .
         working-directory: ${{env.DOCS_BRANCH}}
       - name: Commit and push
         run: |
