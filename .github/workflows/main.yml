@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - run: echo "Deploying ${{ github.ref }} to ${{env.RELEASE_BRANCH}} branch"
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Deploying branch $GITHUB_REF to ${{env.DOCS_BRANCH}} branch"
+      - run: echo "Deploying ${{ github.ref }} to ${{env.DOCS_BRANCH}} branch"
       - name: Check out branch ${{ github.ref }}
         uses: actions/checkout@v2
         with:
