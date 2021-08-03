@@ -34,7 +34,7 @@ jobs:
       - name: Check out release branch
         uses: actions/checkout@v2
         with:
-          ref: kamil-release-branch
+          ref: kamils-release-branch
           path: release
       - name: Read .nvmrc
         working-directory: main
@@ -102,7 +102,8 @@ jobs:
         run: |
           cp -r ../main/docs/* .
           mkdir -p docs/assets/
-          mv assets/ docs/
+          mv assets/* docs/
+          rmdir assets
           cp -r ../main/dist .
         working-directory: gh-pages
       - name: Commit and push
