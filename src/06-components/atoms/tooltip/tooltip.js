@@ -36,7 +36,7 @@ export default function (tagName) {
         } else {
             tt.content.addEventListener('mouseover', () => show(tt), false);
             tt.content.addEventListener('mousedown', () => show(tt), false);
-            tt.content.addEventListener('touchstart', () => show(tt), false);
+            tt.content.addEventListener('touchstart', (e) => { e.stopPropagation(); show(tt); }, false);
             tt.content.addEventListener('click', () => show(tt), false);
             tt.content.addEventListener('mouseleave', () => hide(tt), false);
 

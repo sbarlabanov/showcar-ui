@@ -7,7 +7,7 @@ module.exports = () => {
 
         beforeEach(() => {
             unnecessaryCookie = 'some-generic-cookie'; // random / fake cookie
-            necessaryCookie = 'cookieConsent'; // from the whitelist in shocar-clean-cookie.js
+            necessaryCookie = '_asga'; // from the whitelist in shocar-clean-cookie.js
         });
 
         it('Unnecessary cookies are found & deleted', () => {

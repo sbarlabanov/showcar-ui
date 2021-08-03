@@ -55,12 +55,12 @@ pipeline {
         BRANCH="${env.BRANCH_NAME}"
       }
 
-      agent { node { label 'deploy-as24dev' } }
+      agent { node { label 'deploy-as24assets' } }
 
       steps {
         unstash 'output-dev-dist'
         sh './deploy/deploy.sh'
-        slackSend channel: 'as24_acq_cxp_fizz', color: '#00FF00', message: "Showcar-UI :branch: ${env.BRANCH_NAME} is deployed, check it with toggle `?sc_branch=${env.BRANCH_NAME}`"
+        slackSend channel: 'ug-activation-alerts', color: '#00FF00', message: "Showcar-UI :branch: ${env.BRANCH_NAME} is deployed, check it with toggle `?sc_branch=${env.BRANCH_NAME}`"
       }
     }
 
@@ -96,21 +96,21 @@ pipeline {
          BRANCH='master'
       }
 
-      agent { node { label 'deploy-as24dev' } }
+      agent { node { label 'deploy-as24assets' } }
       steps {
         unstash 'output-prod-dist'
         sh './deploy/deploy.sh'
-        slackSend channel: 'as24_acq_cxp_fizz', color: '#00FF00', message: ":+1: ${env.JOB_NAME} [${env.BUILD_NUMBER}] was released. For the details go to: <https://github.com/Scout24/showcar-ui|showcar-ui>. (<${env.BUILD_URL}|Open>)"
+        slackSend channel: 'ug-activation-alerts', color: '#00FF00', message: ":+1: ${env.JOB_NAME} [${env.BUILD_NUMBER}] was released. For the details go to: <https://github.com/AutoScout24/showcar-ui|showcar-ui>. (<${env.BUILD_URL}|Open>)"
       }
     }
   }
 
   post {
     failure {
-      slackSend channel: 'as24_acq_cxp_fizz', color: '#FF0000', message: ":bomb: ${env.JOB_NAME} [${env.BUILD_NUMBER}] failed. (<${env.BUILD_URL}|Open>)"
+      slackSend channel: 'ug-activation-alerts', color: '#FF0000', message: ":bomb: ${env.JOB_NAME} [${env.BUILD_NUMBER}] failed. (<${env.BUILD_URL}|Open>)"
     }
     aborted {
-      slackSend channel: 'as24_acq_cxp_fizz', color: '#FFFF00', message: ":-1: ${env.JOB_NAME} [${env.BUILD_NUMBER}] aborted. (<${env.BUILD_URL}|Open>)"
+      slackSend channel: 'ug-activation-alerts', color: '#FFFF00', message: ":-1: ${env.JOB_NAME} [${env.BUILD_NUMBER}] aborted. (<${env.BUILD_URL}|Open>)"
     }
   }
 }

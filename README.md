@@ -21,10 +21,10 @@ We are using _node 10.16.0_ version for build. Make sure you have it installed. 
 
 and follow the instructions
 
-For building on your local machine install all npm packages first. Then you can use the gulp command to run the build:
+For building on your local machine install all npm packages first. 
 
     yarn
-    npm run build
+    yarn run build
 
 ## How to run locally:
 
@@ -32,11 +32,26 @@ You can use the gulp default command to run the build locally:
 
     gulp
 
+and open `http://localhost:5000` in your browser to see the showcar docs locally.
+
 ## How to run tests locally:
 
 You can run tests locally in Chrome:
 
     gulp test:fast
+
+## How to publish an npm package
+
+From master branch
+
+    yarn build
+
+If you see after unning build some files in dist please commit it
+
+    npm version patch|minor|major
+    npm publish
+    git push --follow-tags
+
 
 ### Interacting w/ local changes
 
@@ -67,6 +82,12 @@ Locally run
 docker-compose up
 
 and check `localhost:8080/test/showcar-ui-toggled-fragment.html?toguru=sc_develop%3dtest-branch` where `test-branch` is the name of the branch to test
+
+## Build Pipeline
+
+![build pipeline](docs/build-pipeline.jpeg)
+
+Source: https://miro.com/app/board/o9J_l8FFfQY=/
 
 ## Additional information
 
