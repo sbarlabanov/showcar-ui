@@ -124,8 +124,7 @@ jobs:
           git clean -fxd
           cp -r ../artifacts/docs/* .
           mkdir -p docs/assets/
-          mv assets/* docs/
-          rmdir assets
+          mv assets/ docs/
           cp -r ../artifacts/dist .
         working-directory: ${{env.DOCS_BRANCH}}
       - name: Commit and push
