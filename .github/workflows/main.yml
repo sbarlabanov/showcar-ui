@@ -2,7 +2,6 @@ name: Build + Publish
 
 on: [push]
 env:
-  MASTER_BRANCH: master
   RELEASE_BRANCH: release
   DOCS_BRANCH: gh-pages
 
@@ -32,12 +31,14 @@ jobs:
           name: dist
           path: dist
           retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
       - name: upload docs artifact
         uses: actions/upload-artifact@v2
         with:
           name: docs
           path: docs
           retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
       - name: upload others
         uses: actions/upload-artifact@v2
         with:
@@ -50,6 +51,7 @@ jobs:
             LICENSE.md
             Jenkinsfile
           retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
 
   publish-release:
 
