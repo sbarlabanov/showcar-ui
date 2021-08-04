@@ -1,5 +1,4 @@
 [![npm version](https://badge.fury.io/js/showcar-ui.svg)](https://badge.fury.io/js/showcar-ui)
-![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=V3R5K2lFTFVkRG5Ed0p1M0tiM1lhaFJ1Wm9JSllPUFlUMHlVYlp3TVdTdz0tLVhIUFdDVHZwSVk1ME9BWUU2alY0UUE9PQ==--15b92933cc78eb4b925a0778e21e88ae4fe38065)
 
 <img src="https://bstacksupport.zendesk.com/attachments/token/4EkFPJPvuynLZdtPX8ybIapji/?name=Logo-01.svg">
 
