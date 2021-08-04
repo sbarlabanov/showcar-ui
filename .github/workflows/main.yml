@@ -80,13 +80,13 @@ jobs:
         run: |
           shopt -s extglob
           rm -rf ./!(.git*|.|..)
-          cp -r ../artifacts/dist .
-          cp -r ../artifacts/others/src .
-          cp -r ../artifacts/others/deploy .
-          cp ../artifacts/others/package.json .
-          cp ../artifacts/others/README.md .
-          cp ../artifacts/others/LICENSE.md .
-          cp ../artifacts/others/Jenkinsfile .
+          cp -rp ../artifacts/dist .
+          cp -rp ../artifacts/others/src .
+          cp -rp ../artifacts/others/deploy .
+          cp -p ../artifacts/others/package.json .
+          cp -p ../artifacts/others/README.md .
+          cp -p ../artifacts/others/LICENSE.md .
+          cp -p ../artifacts/others/Jenkinsfile .
         working-directory: ${{env.RELEASE_BRANCH}}
       - name: Commit and push
         run: |
@@ -124,10 +124,10 @@ jobs:
         run: |
           shopt -s extglob
           rm -rf ./!(.git*|.|..)
-          cp -r ../artifacts/docs/* .
+          cp -rp ../artifacts/docs/* .
           mkdir -p docs/assets/
           mv assets/ docs/
-          cp -r ../artifacts/dist .
+          cp -rp ../artifacts/dist .
         working-directory: ${{env.DOCS_BRANCH}}
       - name: Commit and push
         run: |
