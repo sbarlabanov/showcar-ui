@@ -1,0 +1,139 @@
+name: Build + Publish
+
+on: [push]
+env:
+  RELEASE_BRANCH: release
+  DOCS_BRANCH: gh-pages
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out branch ${{ github.ref }}
+        uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Use nvm version
+        uses: actions/setup-node@v2
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - name: Build
+        run: |
+          yarn
+          yarn run build
+          yarn run docs
+      - name: upload dist artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+          retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
+      - name: upload docs artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: docs
+          retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
+      - name: upload others
+        uses: actions/upload-artifact@v2
+        with:
+          name: others
+          path: |
+            src
+            deploy
+            package.json
+            README.md
+            LICENSE.md
+            Jenkinsfile
+          retention-days: 1
+        if: ${{ github.ref == 'refs/heads/master' }}
+
+  publish-release:
+
+    needs: build
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Deploying ${{ github.ref }} to ${{env.RELEASE_BRANCH}} branch"
+      - name: Check out ${{env.RELEASE_BRANCH}} branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{env.RELEASE_BRANCH}}
+          path: ${{env.RELEASE_BRANCH}}
+      - name: Download dist artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: artifacts/dist
+      - name: Download others artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: others
+          path: artifacts/others
+      - name: Copy files to ${{env.RELEASE_BRANCH}} branch
+        run: |
+          shopt -s extglob
+          rm -rf ./!(.git*|.|..)
+          cp -r ../artifacts/dist .
+          cp -r ../artifacts/others/src .
+          cp -r ../artifacts/others/deploy .
+          cp ../artifacts/others/package.json .
+          cp ../artifacts/others/README.md .
+          cp ../artifacts/others/LICENSE.md .
+          cp ../artifacts/others/Jenkinsfile .
+        working-directory: ${{env.RELEASE_BRANCH}}
+      - name: Commit and push
+        run: |
+          git config user.name ${{ github.event.pusher.name }}
+          git config user.email ${{ github.event.pusher.email }}
+          git add . -A
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push
+        working-directory: ${{env.RELEASE_BRANCH}}
+
+  publish-docs:
+
+    needs: build
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Deploying ${{ github.ref }} to ${{env.DOCS_BRANCH}} branch"
+      - name: Check out ${{env.DOCS_BRANCH}} branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{env.DOCS_BRANCH}}
+          path: ${{env.DOCS_BRANCH}}
+      - name: download dist artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: artifacts/dist
+      - name: download docs artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: docs
+          path: artifacts/docs
+      - name: Copy files to ${{env.DOCS_BRANCH}} branch
+        run: |
+          shopt -s extglob
+          rm -rf ./!(.git*|.|..)
+          cp -r ../artifacts/docs/* .
+          mkdir -p docs/assets/
+          mv assets/ docs/
+          cp -r ../artifacts/dist .
+        working-directory: ${{env.DOCS_BRANCH}}
+      - name: Commit and push
+        run: |
+          git config user.name ${{ github.event.pusher.name }}
+          git config user.email ${{ github.event.pusher.email }}
+          git add . -A
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push
+        working-directory: ${{env.DOCS_BRANCH}}
