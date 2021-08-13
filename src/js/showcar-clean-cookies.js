@@ -56,7 +56,9 @@ const whiteList = [
     'disable-cmp',
     'loginWallFwdUrl',
     'feedback_shown',
-    'shownewclassifiedlist'
+    'shownewclassifiedlist',
+    'last-seen-classified-guid',
+    'last-5-seen-classifieds'
 ];
 
 const deleteCookieByName = function(cookie) {
